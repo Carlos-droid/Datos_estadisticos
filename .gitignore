@@ -1,0 +1,14 @@
+# Large binary files
+funcas/raw/pdfs/
+ine/raw/hvd/
+
+# Machine-specific
+.checkpoints/
+
+# Python cache
+__pycache__/
+*.pyc
+*.log
+
+# Large data files - regenerate via API: python3 scrape_ine.py
+ine/raw/data_op*.jsonl

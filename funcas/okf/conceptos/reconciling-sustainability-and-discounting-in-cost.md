@@ -1,0 +1,36 @@
+---
+okf_version: "1.0.0"
+title: ""
+description: ""
+source: "Funcas"
+type: "documento_trabajo"
+authors: []
+date: ""
+published: "2020-10-22T11:33:51+00:00"
+lang: "es"
+url: "https://www.funcas.es/documentos_trabajo/reconciling-sustainability-and-discounting-in-cost-benefit-analysis-a-methodological-proposal-diciembre-2005/"
+pdf_url: ""
+pdf_path: ""
+tags: ["econom\u00eda", "espa\u00f1a", "funcas", "documento de trabajo"]
+scraped_at: "2026-07-26T21:28:15.924240+00:00"
+okf_concept: "funcas/documents/reconciling-sustainability-and-discounting-in-cost"
+---
+
+# 
+
+## Resumen
+
+
+
+## Metadatos
+
+- **Fuente:** Funcas
+- **Tipo:** documento_trabajo
+- **Fecha:** 
+- **Autores:** No especificado
+- **URL:** [https://www.funcas.es/documentos_trabajo/reconciling-sustainability-and-discounting-in-cost-benefit-analysis-a-methodological-proposal-diciembre-2005/](https://www.funcas.es/documentos_trabajo/reconciling-sustainability-and-discounting-in-cost-benefit-analysis-a-methodological-proposal-diciembre-2005/)
+- **PDF:** []()
+
+## Contenido
+
+Documento de investigación económica publicado por Funcas.

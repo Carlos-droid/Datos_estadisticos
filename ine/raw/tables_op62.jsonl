@@ -1,0 +1,2 @@
+{"Id": 1990, "Nombre": "Índice de precios de campings (IPAC): índice general nacional y desglose por tarifas", "Codigo": "2002_NAC", "FK_Periodicidad": 1, "FK_Publicacion": 2, "FK_Periodo_ini": 1, "Anyo_Periodo_ini": "2003", "FechaRef_fin": "null", "Ultima_Modificacion": 1782889200000}
+{"Id": 1991, "Nombre": "Índice de precios de campings (IPAC): índice general nacional y desglose por categorías", "Codigo": "2002_NAC", "FK_Periodicidad": 1, "FK_Publicacion": 2, "FK_Periodo_ini": 1, "Anyo_Periodo_ini": "2003", "FechaRef_fin": "null", "Ultima_Modificacion": 1782889200000}
