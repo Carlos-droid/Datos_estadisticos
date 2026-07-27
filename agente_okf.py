@@ -4,12 +4,18 @@ Agente de consulta OKF — Repositorio Economía Española
 Herramientas adaptadas al esquema real de catalog.jsonl y bundles okf/
 
 Esquema de catalog.jsonl:
-  id, source, title, date_iso, description, tags, url, type,
-  normalized_at, authors (Funcas), geography/technique (BBVA),
-  tables_count/series_count/values_count (INE)
+  Campos comunes:  id, source, title, date_iso, description, tags, url, type, normalized_at
+  Funcas:          authors, date_raw, pdf_url
+  BBVA Research:   geography, technique, date_raw
+  INE:             operation_id, operation_code, tables_count
+
+Tipos reales en catálogo:
+  - working_paper  (Funcas)
+  - report         (BBVA Research, algunos Funcas)
+  - dataset        (INE)
 
 Uso:
-  pip install openai pyyaml python-dotenv
+  pip install openai python-dotenv
   export OPENROUTER_API_KEY=...   # o AGENTE_MODO=OLLAMA
   python agente_okf.py
 """
@@ -21,7 +27,10 @@ import unicodedata
 from datetime import datetime
 from pathlib import Path
 
-import yaml
+try:
+    from dotenv import load_dotenv
+except ImportError:
+    load_dotenv = None
 
 # ---------------------------------------------------------------------------
 # BACKEND OPCIONAL: solo falla si se intenta usar sin tener instalado openai
@@ -31,9 +40,26 @@ try:
 except ImportError:
     OpenAI = None  # Se comprueba al conectar
 
+# Cargar .env si existe (path relativo o desde OKF_BASE_DIR)
+_env_loaded = False
+def _ensure_dotenv():
+    global _env_loaded
+    if _env_loaded:
+        return
+    # Priorizar dotenv si está disponible
+    if load_dotenv is not None:
+        base = os.getenv("OKF_BASE_DIR", "/mnt/hdd/repositorio-okf-economia")
+        for env_path in (Path(base) / ".env", Path.cwd() / ".env"):
+            if env_path.exists():
+                load_dotenv(str(env_path))
+                break
+    _env_loaded = True
+
 # ---------------------------------------------------------------------------
 # CONFIGURACIÓN
 # ---------------------------------------------------------------------------
+
+_ensure_dotenv()  # Cargar .env antes de leer vars de entorno
 
 MODO = os.getenv("AGENTE_MODO", "OPENROUTER")  # "OPENROUTER" | "OLLAMA"
 
@@ -52,7 +78,7 @@ def _conectar():
                 "X-Title": "Agente OKF Economía Española",
             },
         )
-        modelo = os.getenv("AGENTE_MODELO", "nous-hermes-3-llama-3.1-70b")
+        modelo = os.getenv("AGENTE_MODELO", "google/gemini-2.0-flash-001")
     elif MODO == "OLLAMA":
         client = OpenAI(
             base_url="http://localhost:11434/v1",
@@ -137,9 +163,10 @@ def listar_fuentes() -> str:
         "tags_mas_frecuentes": top_tags,
         "campos_disponibles": [
             "id", "source", "title", "date_iso", "description",
-            "tags", "url", "type", "authors",          # Funcas
-            "geography", "technique",                   # BBVA
-            "tables_count", "series_count", "values_count",  # INE
+            "tags", "url", "type", "normalized_at",
+            "authors", "date_raw", "pdf_url",                # Funcas
+            "geography", "technique", "date_raw",            # BBVA
+            "operation_id", "operation_code", "tables_count", # INE
         ],
     }
     return json.dumps(resumen, ensure_ascii=False, indent=2)
@@ -295,6 +322,114 @@ def _strip_accents(s: str) -> str:
 
 
 # ---------------------------------------------------------------------------
+# HERRAMIENTA 4 — obtener_datos_ine
+# ---------------------------------------------------------------------------
+
+def obtener_datos_ine(
+    table_id: int,
+    operation_code: str = None,
+    fecha_desde: str = None,
+    fecha_hasta: str = None,
+    max_series: int = 5,
+    max_valores: int = 20,
+) -> str:
+    """
+    Llama a la API REST del INE en tiempo real y devuelve datos numéricos
+    de una tabla concreta.
+
+    Args:
+        table_id: ID numérico de la tabla INE (ej. 24077 para IPC general)
+        operation_code: Código de la operación (ej. "IPC") — solo informativo
+        fecha_desde: Fecha inicial (YYYY-MM-DD o YYYYMMDD)
+        fecha_hasta: Fecha final (YYYY-MM-DD o YYYYMMDD)
+        max_series: Máximo de series a devolver (default 5)
+        max_valores: Máximo de valores por serie (default 20, 0=todos)
+
+    Returns:
+        JSON con series, valores, metadatos de la tabla
+    """
+    import urllib.request
+
+    # Construir URL
+    base = "https://servicios.ine.es/wstempus/js/ES/DATOS_TABLA"
+    url = f"{base}/{table_id}"
+    params = []
+    if fecha_desde and fecha_hasta:
+        # Normalizar formato: quitar guiones si los tiene
+        d1 = fecha_desde.replace("-", "")
+        d2 = fecha_hasta.replace("-", "")
+        params.append(f"date={d1}:{d2}")
+    elif fecha_desde:
+        d1 = fecha_desde.replace("-", "")
+        params.append(f"date={d1}:")
+    if params:
+        url += "?" + "&".join(params)
+
+    try:
+        req = urllib.request.Request(
+            url,
+            headers={"User-Agent": "Mozilla/5.0", "Accept": "application/json"},
+        )
+        resp = urllib.request.urlopen(req, timeout=30)
+        data = json.loads(resp.read().decode("utf-8", errors="replace"))
+    except urllib.error.HTTPError as e:
+        return json.dumps({
+            "error": f"HTTP {e.code} al consultar tabla {table_id}",
+            "url": url,
+        })
+    except Exception as e:
+        return json.dumps({
+            "error": f"Error al consultar INE: {str(e)}",
+            "url": url,
+        })
+
+    if not isinstance(data, list):
+        return json.dumps({"error": "Respuesta inesperada de la API", "url": url})
+
+    # Formatear respuesta
+    series = []
+    for s in data[:max_series]:
+        cod = s.get("COD", "")
+        nombre = s.get("Nombre", "")
+        valores_raw = s.get("Data", [])
+
+        # Limitar valores
+        if max_valores > 0:
+            valores_raw = valores_raw[-max_valores:]
+
+        valores = []
+        for v in valores_raw:
+            try:
+                ts = v["Fecha"] / 1000
+                fecha = datetime.fromtimestamp(ts).strftime("%Y-%m-%d")
+            except (KeyError, TypeError):
+                fecha = str(v.get("Fecha", ""))
+
+            valores.append({
+                "fecha": fecha,
+                "periodo": v.get("FK_Periodo"),
+                "anyo": v.get("Anyo"),
+                "valor": v.get("Valor"),
+            })
+
+        series.append({
+            "codigo": cod,
+            "nombre": nombre,
+            "valores_count": len(valores_raw),
+            "valores": valores,
+        })
+
+    return json.dumps({
+        "tabla_id": table_id,
+        "operation_code": operation_code,
+        "url_api": url,
+        "series_count": len(data),
+        "mostrando": len(series),
+        "series": series,
+    }, ensure_ascii=False, indent=2)
+
+
+# ---------------------------------------------------------------------------
 # DEFINICIÓN DE HERRAMIENTAS PARA EL LLM
 # ---------------------------------------------------------------------------
 
@@ -326,26 +461,26 @@ TOOLS = [
                     "source": {
                         "type": "string",
                         "enum": ["funcas", "bbva", "ine"],
-                        "description": "Fuente: 'funcas', 'bbva' o 'ine'",
+                        "description": "Fuente: 'funcas' (documentos), 'bbva' (publicaciones), 'ine' (operaciones estadísticas)",
                     },
                     "tipo": {
                         "type": "string",
-                        "description": "'documento_trabajo', 'dataset' o 'report'",
+                        "description": "Tipo real: 'working_paper' (Funcas), 'report' (BBVA/Funcas), 'dataset' (INE)",
                     },
                     "desde": {"type": "string", "description": "Fecha ISO mínima, ej. '2020-01-01'"},
                     "hasta": {"type": "string", "description": "Fecha ISO máxima, ej. '2024-12-31'"},
-                    "texto": {"type": "string", "description": "Texto en título/descripción"},
+                    "texto": {"type": "string", "description": "Texto en título/descripción (insensible a acentos)"},
                     "tags": {
                         "type": "array", "items": {"type": "string"},
                         "description": "Tags que deben estar TODOS presentes",
                     },
                     "geography": {
                         "type": "string",
-                        "description": "Solo BBVA: 'España' o 'Global'",
+                        "description": "Solo BBVA: 'España', 'Global', 'México', etc.",
                     },
                     "max_resultados": {
                         "type": "integer",
-                        "description": "Límite de resultados (default 20)",
+                        "description": "Límite de resultados (default 20, recomendado max 50)",
                     },
                 },
             },
@@ -376,13 +511,55 @@ TOOLS = [
             },
         },
     },
+    {
+        "type": "function",
+        "function": {
+            "name": "obtener_datos_ine",
+            "description": (
+                "Llama a la API REST del INE en tiempo real y devuelve datos numéricos "
+                "de una tabla concreta. Úsalo cuando el usuario pregunte por valores "
+                "concretos: IPC, inflación, paro, PIB, etc."
+            ),
+            "parameters": {
+                "type": "object",
+                "properties": {
+                    "table_id": {
+                        "type": "integer",
+                        "description": "ID numérico de la tabla INE (ej. 24077 para IPC general)",
+                    },
+                    "operation_code": {
+                        "type": "string",
+                        "description": "Código de la operación (ej. 'IPC', 'EPA', 'IPCA')",
+                    },
+                    "fecha_desde": {
+                        "type": "string",
+                        "description": "Fecha inicial (YYYY-MM-DD), ej. '2024-01-01'",
+                    },
+                    "fecha_hasta": {
+                        "type": "string",
+                        "description": "Fecha final (YYYY-MM-DD), ej. '2026-07-27'",
+                    },
+                    "max_series": {
+                        "type": "integer",
+                        "description": "Máximo de series a devolver (default 5)",
+                    },
+                    "max_valores": {
+                        "type": "integer",
+                        "description": "Máximo de valores por serie (default 20, 0=todos)",
+                    },
+                },
+                "required": ["table_id"],
+            },
+        },
+    },
 ]
 
 # Mapa de funciones ejecutables
 FUNC_MAP = {
-    "listar_fuentes":    lambda args: listar_fuentes(),
-    "buscar_en_catalogo": lambda args: buscar_en_catalogo(**args),
-    "leer_bundle_okf":   lambda args: leer_bundle_okf(**args),
+    "listar_fuentes":      lambda args: listar_fuentes(),
+    "buscar_en_catalogo":  lambda args: buscar_en_catalogo(**args),
+    "leer_bundle_okf":     lambda args: leer_bundle_okf(**args),
+    "obtener_datos_ine":   lambda args: obtener_datos_ine(**args),
 }
 
 
@@ -391,7 +568,8 @@ FUNC_MAP = {
 # ---------------------------------------------------------------------------
 
 SYSTEM_PROMPT = """Eres un asistente especializado en economía española con acceso al \
-repositorio OKF de datos económicos. El catálogo contiene 1.052 ítems de tres fuentes:
+repositorio OKF de datos económicos. El catálogo contiene 1.052 ítems de tres fuentes, \
+y puedes consultar la API del INE en tiempo real para obtener datos numéricos:
 
 - **Funcas**: 930 documentos de trabajo y notas técnicas (2011–2026)
 - **BBVA Research**: 10 publicaciones con enfoque en big data y España
@@ -402,10 +580,14 @@ Instrucciones de uso de herramientas:
 1. Empieza siempre con listar_fuentes si no sabes qué hay disponible.
 2. Usa buscar_en_catalogo para filtrar ítems relevantes. Combina parámetros.
 3. Usa leer_bundle_okf solo para los ítems más relevantes (cuesta tokens).
-4. Basa tus respuestas ÚNICAMENTE en los datos leídos. Si algo no está en el \
+4. **Para datos numéricos concretos** (IPC, inflación, paro, PIB...), usa \
+   obtener_datos_ine con el table_id. Puedes obtener table_id desde el bundle OKF \
+   (leer_bundle_okf) o desde el catálogo.
+5. Basa tus respuestas ÚNICAMENTE en los datos leídos. Si algo no está en el \
    catálogo, dilo explícitamente.
-5. Cuando cites datos del INE, indica el endpoint de API si está disponible.
 6. Separa siempre DATOS DEL CATÁLOGO de ESTIMACIONES PROPIAS."""
+
+
 
 
 # ---------------------------------------------------------------------------
@@ -473,19 +655,22 @@ def consultar(pregunta: str, verbose: bool = False) -> str:
 # ---------------------------------------------------------------------------
 
 def main():
-    print("=" * 60)
-    print("Agente OKF — Economía Española")
-    print(f"Modo: {MODO}")
-    print(f"Catálogo: {CATALOG_PATH}")
-    print("Escribe 'salir' para terminar.")
-    print("=" * 60)
-
+    # Forzar carga del catálogo antes de entrar al bucle
     try:
         cat = _catalogo()
-        print(f"✅ Catálogo cargado: {len(cat)} ítems\n")
     except FileNotFoundError as e:
         print(f"❌ {e}")
         return
+
+    print("=" * 60)
+    print(f"Agente OKF — Economía Española")
+    print(f"Modo: {MODO}")
+    print(f"Catálogo: {CATALOG_PATH} ({len(cat)} ítems)")
+    print(f"Fuentes: Funcas={sum(1 for r in cat if r.get('source')=='Funcas')}, "
+          f"BBVA={sum(1 for r in cat if 'BBVA' in r.get('source',''))}, "
+          f"INE={sum(1 for r in cat if r.get('source')=='INE')}")
+    print("Escribe 'salir' para terminar.")
+    print("=" * 60)
 
     while True:
         try:
@@ -504,8 +689,10 @@ def main():
         try:
             respuesta = consultar(pregunta, verbose=True)
             print(f"\nRespuesta:\n{respuesta}\n")
-        except (ImportError, ValueError) as e:
-            print(f"❌ {e}")
+        except (ImportError, ValueError, ConnectionError) as e:
+            print(f"❌ Error de configuración: {e}")
+        except Exception as e:
+            print(f"❌ Error inesperado: {e}")
         print("-" * 60)
 
 
