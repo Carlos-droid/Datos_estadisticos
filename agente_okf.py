@@ -17,6 +17,7 @@ Uso:
 import json
 import os
 import re
+import unicodedata
 from datetime import datetime
 from pathlib import Path
 
@@ -151,6 +152,7 @@ def listar_fuentes() -> str:
 def buscar_en_catalogo(
     source: str | None = None,
     tipo: str | None = None,
+    type: str | None = None,   # alias inglés
     desde: str | None = None,
     hasta: str | None = None,
     texto: str | None = None,
@@ -165,23 +167,33 @@ def buscar_en_catalogo(
     cat = _catalogo()
     resultados = []
     texto_lower = texto.lower() if texto else None
+    # Normalizar acentos para búsqueda (ej. "inflación" → "inflacion")
+    texto_plain = _strip_accents(texto_lower) if texto_lower else None
+    # Aceptar tanto 'tipo' como 'type' (alias inglés)
+    filtro_tipo = tipo or type
 
     for r in cat:
-        if source and r.get("source", "").lower() != source.lower():
-            continue
-        if tipo and r.get("type", "").lower() != tipo.lower():
+        # Source match flexible: "bbva" → "BBVA Research", "ine" → "INE", "funcas" → "Funcas"
+        if source:
+            r_source = r.get("source", "").lower()
+            s_lower = source.lower()
+            if r_source != s_lower and s_lower not in r_source and r_source not in s_lower:
+                continue
+        if filtro_tipo and r.get("type", "").lower() != filtro_tipo.lower():
             continue
         if desde and (r.get("date_iso") or "") < desde:
             continue
         if hasta and (r.get("date_iso") or "") > hasta:
             continue
+        # Filtro texto libre (insensible a acentos)
         if texto_lower:
             haystack = (
                 (r.get("title") or "").lower()
                 + " "
                 + (r.get("description") or "").lower()
             )
-            if texto_lower not in haystack:
+            haystack_plain = _strip_accents(haystack)
+            if texto_lower not in haystack and texto_plain not in haystack_plain:
                 continue
         if tags:
             r_tags = [t.lower() for t in r.get("tags", [])]
@@ -270,6 +282,16 @@ def leer_bundle_okf(item_id: str, source: str | None = None) -> str:
         "error": f"Bundle OKF no encontrado para id='{item_id}' en {okf_dir}",
         "candidatos_probados": [str(c) for c in candidatos],
     })
+
+
+# ---------------------------------------------------------------------------
+# UTILIDADES
+# ---------------------------------------------------------------------------
+
+def _strip_accents(s: str) -> str:
+    """Elimina acentos y diacríticos de un string."""
+    nfkd = unicodedata.normalize("NFKD", s)
+    return "".join(c for c in nfkd if not unicodedata.combining(c))
 
 
 # ---------------------------------------------------------------------------

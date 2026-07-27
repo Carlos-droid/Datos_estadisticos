@@ -168,7 +168,7 @@ def normalize_bbva() -> list[dict]:
             date_raw = doc.get("date_raw", "")
             date_iso = _parse_date_iso(date_raw)
             geography = ""
-            if "espana" in slug.lower() or "españa" in slug.lower():
+            if "espana" in slug.lower() or "españa" in slug.lower() or "espa-a" in slug.lower():
                 geography = "España"
             elif "global" in slug.lower():
                 geography = "Global"
