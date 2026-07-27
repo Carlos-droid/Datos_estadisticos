@@ -1,22 +1,30 @@
 #!/usr/bin/env python3
-"""BBVA Research scraper: publications, Big Data, Spain, and working papers"""
+"""BBVA Research scraper — publicaciones, Big Data, España."""
 
 import json, os, sys, time, re, subprocess, urllib.request
 from datetime import datetime, timezone
 from pathlib import Path
 
-BASE_DIR = Path("/mnt/hdd/repositorio-okf-economia/bbva")
-RAW_DIR = BASE_DIR / "raw"
-PDF_DIR = RAW_DIR / "pdfs"
-PROC_DIR = BASE_DIR / "processed"
-OKF_DIR = BASE_DIR / "okf"
-CONCEPTOS_DIR = OKF_DIR / "conceptos"
+# Config portable
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+from src.python.config import BASE_DIR as REPO_DIR, BBVA_DIR, source_dirs
+from src.python.log_utils import ScrapeLogger
 
-for d in [RAW_DIR, PDF_DIR, PROC_DIR, OKF_DIR, CONCEPTOS_DIR]:
+log = ScrapeLogger("scrape_bbva", "BBVA")
+
+BASE_DIR = BBVA_DIR
+RAW_DIR  = source_dirs(BBVA_DIR)["raw"]
+PROC_DIR = source_dirs(BBVA_DIR)["processed"]
+OKF_DIR  = source_dirs(BBVA_DIR)["okf"]
+CONCEPTOS_DIR = source_dirs(BBVA_DIR)["conceptos"]
+
+for d in [RAW_DIR, PDF_DIR := source_dirs(BBVA_DIR)["raw_pdfs"], PROC_DIR, OKF_DIR, CONCEPTOS_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
 CRWL_ENV = os.environ.copy()
-CRWL_ENV["PATH"] = f"/home/ia/.hermes/profiles/blogs/home/.local/bin:{os.environ.get('PATH', '')}"
+crwl_path = os.environ.get("CRWL_PATH", "")
+if crwl_path:
+    CRWL_ENV["PATH"] = f"{crwl_path}:{os.environ.get('PATH', '')}"
 
 def crwl(url, timeout=60):
     cmd = f"crwl crawl {url} -o md"

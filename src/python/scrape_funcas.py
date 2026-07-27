@@ -1,23 +1,33 @@
 #!/usr/bin/env python3
-"""Funcas scraper: extract all working documents & technical notes via sitemap + crawl4ai"""
+"""Funcas scraper — documentos de trabajo y notas técnicas vía sitemap + crawl4ai."""
 
 import json, os, sys, time, re, subprocess, urllib.request, urllib.parse, xml.etree.ElementTree as ET
 from datetime import datetime, timezone
 from pathlib import Path
 
-BASE_DIR = Path("/mnt/hdd/repositorio-okf-economia/funcas")
-RAW_DIR = BASE_DIR / "raw"
-PDF_DIR = RAW_DIR / "pdfs"
-PROC_DIR = BASE_DIR / "processed"
-OKF_DIR = BASE_DIR / "okf"
-CONCEPTOS_DIR = OKF_DIR / "conceptos"
+# Config portable
+sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
+from src.python.config import BASE_DIR as REPO_DIR, FUNCAS_DIR, source_dirs
+from src.python.log_utils import ScrapeLogger
+
+log = ScrapeLogger("scrape_funcas", "Funcas")
+
+BASE_DIR = FUNCAS_DIR
+RAW_DIR  = source_dirs(FUNCAS_DIR)["raw"]
+PDF_DIR  = source_dirs(FUNCAS_DIR)["raw_pdfs"]
+PROC_DIR = source_dirs(FUNCAS_DIR)["processed"]
+OKF_DIR  = source_dirs(FUNCAS_DIR)["okf"]
+CONCEPTOS_DIR = source_dirs(FUNCAS_DIR)["conceptos"]
 
 for d in [RAW_DIR, PDF_DIR, PROC_DIR, OKF_DIR, CONCEPTOS_DIR]:
     d.mkdir(parents=True, exist_ok=True)
 
 CRWL = "crwl crawl"
 CRWL_ENV = os.environ.copy()
-CRWL_ENV["PATH"] = f"/home/ia/.hermes/profiles/blogs/home/.local/bin:{os.environ.get('PATH', '')}"
+# PATH para crwl (crawl4ai) — configurable vía entorno
+crwl_path = os.environ.get("CRWL_PATH", "")
+if crwl_path:
+    CRWL_ENV["PATH"] = f"{crwl_path}:{os.environ.get('PATH', '')}"
 
 def run_crwl(url, timeout=60):
     """Run crawl4ai CLI and return markdown output"""
