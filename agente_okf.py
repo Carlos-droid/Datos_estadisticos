@@ -430,6 +430,102 @@ def obtener_datos_ine(
 
 
 # ---------------------------------------------------------------------------
+# HERRAMIENTA 5 — buscar_semantico
+# ---------------------------------------------------------------------------
+
+def _cargar_indice_semantico():
+    """Carga embeddings, IDs y títulos en memoria (lazy, una vez)."""
+    global _SEM_EMBEDDINGS, _SEM_IDS, _SEM_TITLES
+    if _SEM_EMBEDDINGS is not None:
+        return
+    try:
+        import numpy as np
+        emb_path = BASE_DIR / "processed" / "embeddings.npy"
+        ids_path = BASE_DIR / "processed" / "embedding_ids.json"
+        titles_path = BASE_DIR / "processed" / "embedding_titles.json"
+
+        _SEM_EMBEDDINGS = np.load(str(emb_path))
+        with open(ids_path, encoding="utf-8") as f:
+            _SEM_IDS = json.load(f)
+        with open(titles_path, encoding="utf-8") as f:
+            _SEM_TITLES = json.load(f)
+        print(f"Índice semántico cargado: {_SEM_EMBEDDINGS.shape}")
+    except Exception as e:
+        print(f"Error cargando índice semántico: {e}")
+        raise
+
+_SEM_EMBEDDINGS = None
+_SEM_IDS = None
+_SEM_TITLES = None
+
+
+def buscar_semantico(
+    texto: str,
+    max_resultados: int = 10,
+    min_score: float = 0.0,
+) -> str:
+    """
+    Busca en el catálogo por similitud semántica (significado).
+    No busca palabras exactas — entiende el concepto.
+    """
+    _cargar_indice_semantico()
+
+    # Embedizar la consulta
+    import urllib.request
+    payload = json.dumps({
+        "model": "nomic-embed-text-v2-moe",
+        "prompt": texto,
+    }).encode()
+    req = urllib.request.Request(
+        "http://localhost:11434/api/embeddings",
+        data=payload,
+        headers={"Content-Type": "application/json"},
+    )
+    resp = urllib.request.urlopen(req, timeout=30)
+    q_emb = json.loads(resp.read().decode())["embedding"]
+
+    # Cosine similarity
+    import numpy as np
+    q_vec = np.array(q_emb, dtype=np.float32)
+    norms = np.linalg.norm(_SEM_EMBEDDINGS, axis=1)
+    q_norm = np.linalg.norm(q_vec)
+    if q_norm == 0:
+        return json.dumps({"error": "No se pudo generar embedding para la consulta"})
+
+    sims = np.dot(_SEM_EMBEDDINGS, q_vec) / (norms * q_norm + 1e-10)
+    indices = np.argsort(sims)[::-1]
+
+    resultados = []
+    cat = _catalogo()
+    for idx in indices:
+        score = float(sims[idx])
+        if score < min_score:
+            break
+        item_id = _SEM_IDS[idx]
+        # Buscar en catálogo
+        item = next((r for r in cat if r.get("id") == item_id), None)
+        if not item:
+            continue
+        resultados.append({
+            "id": item_id,
+            "title": item.get("title", _SEM_TITLES[idx]),
+            "source": item.get("source"),
+            "date_iso": item.get("date_iso"),
+            "description": (item.get("description") or "")[:150],
+            "url": item.get("url"),
+            "score": round(score, 4),
+        })
+        if len(resultados) >= max_resultados:
+            break
+
+    return json.dumps({
+        "consulta": texto,
+        "total_encontrados": len(resultados),
+        "resultados": resultados,
+    }, ensure_ascii=False, indent=2)
+
+
+# ---------------------------------------------------------------------------
 # DEFINICIÓN DE HERRAMIENTAS PARA EL LLM
 # ---------------------------------------------------------------------------
 
@@ -560,7 +656,45 @@ FUNC_MAP = {
     "buscar_en_catalogo":  lambda args: buscar_en_catalogo(**args),
     "leer_bundle_okf":     lambda args: leer_bundle_okf(**args),
     "obtener_datos_ine":   lambda args: obtener_datos_ine(**args),
+    "buscar_semantico":    lambda args: buscar_semantico(**args),
 }
+
+
+# ---------------------------------------------------------------------------
+# TOOL 5 — buscar_semantico (añadir a TOOLS arriba)
+# ---------------------------------------------------------------------------
+# Nota: buscar_semantico se añade programáticamente a TOOLS
+_SEM_TOOL = {
+    "type": "function",
+    "function": {
+        "name": "buscar_semantico",
+        "description": (
+            "Busca en el catálogo por significado, no por palabras exactas. "
+            "Úsalo para preguntas conceptuales donde las palabras concretas "
+            "no aparecen en los títulos. Ej: 'impacto de la inflación en hogares' "
+            "encontrará documentos sobre IPC, poder adquisitivo, etc."
+        ),
+        "parameters": {
+            "type": "object",
+            "properties": {
+                "texto": {
+                    "type": "string",
+                    "description": "Texto o frase a buscar semánticamente",
+                },
+                "max_resultados": {
+                    "type": "integer",
+                    "description": "Máximo de resultados (default 10)",
+                },
+                "min_score": {
+                    "type": "number",
+                    "description": "Score mínimo de similitud (0.0-1.0, default 0.0)",
+                },
+            },
+            "required": ["texto"],
+        },
+    },
+}
+TOOLS.append(_SEM_TOOL)
 
 
 # ---------------------------------------------------------------------------
@@ -579,8 +713,10 @@ y puedes consultar la API del INE en tiempo real para obtener datos numéricos:
 Instrucciones de uso de herramientas:
 1. Empieza siempre con listar_fuentes si no sabes qué hay disponible.
 2. Usa buscar_en_catalogo para filtrar ítems relevantes. Combina parámetros.
-3. Usa leer_bundle_okf solo para los ítems más relevantes (cuesta tokens).
-4. **Para datos numéricos concretos** (IPC, inflación, paro, PIB...), usa \
+3. **Para búsqueda por concepto** (no por palabra exacta), usa buscar_semantico. \
+   Ej: 'impacto inflación hogares' encuentra IPC, poder adquisitivo, etc.
+4. Usa leer_bundle_okf solo para los ítems más relevantes (cuesta tokens).
+5. **Para datos numéricos concretos** (IPC, inflación, paro, PIB...), usa \
    obtener_datos_ine con el table_id. **IMPORTANTE: Siempre pasa fecha_desde \
    y fecha_hasta juntos** — sin fecha_desde la API del INE devuelve solo \
    datos históricos (pre-2002). Si el usuario no da fechas, usa los últimos \
