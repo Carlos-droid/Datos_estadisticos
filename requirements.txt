@@ -1,0 +1,24 @@
+# ============================================================
+# OKF Economía Española — Dependencias
+# ============================================================
+# Instalar con: uv pip install -r requirements.txt
+# (dentro del venv del proyecto)
+
+# --- Scraping ---
+crawl4ai>=0.9.0            # Scraping HTML con IA (Funcas, BBVA)
+
+# --- Datos ---
+polars>=1.0.0              # DataFrames rápidos (procesamiento datos INE)
+pyarrow>=15.0.0            # Apache Arrow (intercambio R↔Python)
+
+# --- Utilidades ---
+requests>=2.31.0           # Peticiones HTTP (alternativa a urllib)
+python-dotenv>=1.0.0       # Variables de entorno desde .env
+
+# --- Tests (opcional) ---
+pytest>=8.0.0              # Test runner
+pytest-cov>=5.0.0          # Cobertura
+
+# Desarrollo
+# crawl4ai requiere Playwright: crwl setup  (instala chromium)
+# Ver: https://docs.crawl4ai.com/
