@@ -581,8 +581,10 @@ Instrucciones de uso de herramientas:
 2. Usa buscar_en_catalogo para filtrar ítems relevantes. Combina parámetros.
 3. Usa leer_bundle_okf solo para los ítems más relevantes (cuesta tokens).
 4. **Para datos numéricos concretos** (IPC, inflación, paro, PIB...), usa \
-   obtener_datos_ine con el table_id. Puedes obtener table_id desde el bundle OKF \
-   (leer_bundle_okf) o desde el catálogo.
+   obtener_datos_ine con el table_id. **IMPORTANTE: Siempre pasa fecha_desde \
+   y fecha_hasta juntos** — sin fecha_desde la API del INE devuelve solo \
+   datos históricos (pre-2002). Si el usuario no da fechas, usa los últimos \
+   12 meses como defecto.
 5. Basa tus respuestas ÚNICAMENTE en los datos leídos. Si algo no está en el \
    catálogo, dilo explícitamente.
 6. Separa siempre DATOS DEL CATÁLOGO de ESTIMACIONES PROPIAS."""
