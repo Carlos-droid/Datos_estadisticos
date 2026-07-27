@@ -63,16 +63,26 @@ def normalize_funcas() -> list[dict]:
             okf_path = FUNCAS_OKF / "conceptos" / f"{slug}.md"
             title = doc.get("title", "") or slug
             description = ""
+            url = doc.get("url", "")
             if okf_path.exists():
                 content = okf_path.read_text(encoding="utf-8")
                 # Extraer title del YAML frontmatter
                 m = re.search(r'^title:\s*"(.+)"$', content, re.MULTILINE)
                 if m:
                     title = m.group(1)
-                # Extraer description
+                # Extraer description del YAML
                 m = re.search(r'^description:\s*"(.+)"$', content, re.MULTILINE)
                 if m:
                     description = m.group(1)
+                # Extraer URL del body: **URL:** [texto](url)
+                m2 = re.search(r'\*\*URL:\*\*\s*\[.+?\]\((.+?)\)', content)
+                if m2 and not url:
+                    url = m2.group(1)
+                # Si no hay descripción, extraer el resumen del body
+                if not description:
+                    m3 = re.search(r'## Resumen\s*\n+(.*?)(?=\n##|$)', content, re.DOTALL)
+                    if m3:
+                        description = m3.group(1).strip()[:500]
 
             # Limpiar fecha
             date_raw = doc.get("date", "") or doc.get("lastmod", "")
@@ -88,7 +98,7 @@ def normalize_funcas() -> list[dict]:
                 "date_iso": date_iso,
                 "description": description,
                 "tags": ["economía", "españa", "funcas"],
-                "url": doc.get("url", ""),
+                "url": url,
                 "pdf_url": doc.get("pdf_url", ""),
                 "authors": authors,
                 "date_raw": date_raw,
@@ -111,6 +121,16 @@ def normalize_bbva() -> list[dict]:
         log.warning("BBVA raw/docs.jsonl no existe", path=str(jsonl_path))
         return items
 
+    # IDs de páginas de sistema (no publicaciones reales)
+    SYSTEM_PAGES = {
+        "centro-de-preferencia-de-la-privacidad",
+        "lista-de-cookies",
+        "configuraci-n-de-cookies",
+        "publicaciones-m-s-recientes",
+        "publicaciones-m-s-recientes-de-espa-a",
+        "publicaciones-m-s-recientes-sobre-big-da",
+    }
+
     with open(jsonl_path, encoding="utf-8") as f:
         for line in f:
             line = line.strip()
@@ -119,10 +139,15 @@ def normalize_bbva() -> list[dict]:
             doc = json.loads(line)
             slug = doc.get("id", "")
 
-            # Leer OKF bundle para título real
+            # Saltar páginas de sistema (no son publicaciones reales)
+            if slug in SYSTEM_PAGES:
+                continue
+
+            # Leer OKF bundle para título real + URL
             okf_path = BBVA_OKF / "conceptos" / f"{slug}.md"
             title = doc.get("title", "") or slug
             description = ""
+            url = doc.get("url", "")
             if okf_path.exists():
                 content = okf_path.read_text(encoding="utf-8")
                 m = re.search(r'^title:\s*"(.+)"$', content, re.MULTILINE)
@@ -131,6 +156,14 @@ def normalize_bbva() -> list[dict]:
                 m = re.search(r'^description:\s*"(.+)"$', content, re.MULTILINE)
                 if m:
                     description = m.group(1)
+                # Extraer URL del YAML frontmatter
+                m4 = re.search(r'^url:\s*"(.+)"$', content, re.MULTILINE)
+                if m4 and m4.group(1) and not url:
+                    url = m4.group(1)
+
+            # Generar URL desde slug si no se encontró
+            if not url:
+                url = f"https://www.bbvaresearch.com/publicaciones/{slug}/"
 
             date_raw = doc.get("date_raw", "")
             date_iso = _parse_date_iso(date_raw)
@@ -147,7 +180,7 @@ def normalize_bbva() -> list[dict]:
                 "date_iso": date_iso,
                 "description": description,
                 "tags": ["economía", geography] if geography else ["economía"],
-                "url": doc.get("url", ""),
+                "url": url,
                 "geography": geography,
                 "technique": doc.get("technique", ""),
                 "date_raw": date_raw,
@@ -203,6 +236,15 @@ def normalize_ine() -> list[dict]:
             # Descripción desde el catálogo o la propia operación
             description = op_map.get(code, name)
 
+            # URL desde el OKF bundle
+            url = ""
+            okf_path = INE_OKF / "conceptos" / f"{code.lower()}.md"
+            if okf_path.exists():
+                okf_content = okf_path.read_text(encoding="utf-8")
+                m4 = re.search(r'^url:\s*"(.+)"$', okf_content, re.MULTILINE)
+                if m4:
+                    url = m4.group(1)
+
             # Fecha: última modificación desde tablas
             date_iso = ""
             if tables_path.exists():
@@ -224,6 +266,7 @@ def normalize_ine() -> list[dict]:
                 "date_iso": date_iso,
                 "description": description,
                 "tags": ["INE", "economía española", code.lower()] if code else ["INE"],
+                "url": url,
                 "operation_id": op_id,
                 "operation_code": code,
                 "tables_count": table_count,
