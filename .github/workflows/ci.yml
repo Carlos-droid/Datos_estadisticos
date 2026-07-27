@@ -1,0 +1,31 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+    branches: [main]
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Configurar Python
+        uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+
+      - name: Instalar dependencias
+        run: |
+          pip install pytest polars pyarrow
+          pip install -r requirements.txt
+
+      - name: Tests offline (sin conexión externa)
+        env:
+          OKF_BASE_DIR: /tmp/okf-ci-test
+        run: |
+          mkdir -p /tmp/okf-ci-test/.logs /tmp/okf-ci-test/.checkpoints
+          pytest tests/ -v -k "not api" -x
