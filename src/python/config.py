@@ -49,6 +49,22 @@ BBVA_SOURCES = [
     ("https://www.bbvaresearch.com/tag/big-data/",          "Big Data Tag"),
 ]
 
+# ECB SDMX API (Statistical Data Warehouse)
+ECB_API_BASE = "https://data-api.ecb.europa.eu/service"
+ECB_DATAFLOWS = {
+    "EXR": "Exchange Rates (tipos de cambio)",
+    "ICP": "Harmonised Index of Consumer Prices (HICP/IPCA)",
+    "MIR": "MFI Interest Rates (tipos de interés bancarios)",
+    "BSI": "Balance Sheet Items (balances financieros)",
+    "BOP": "Balance of Payments (balanza de pagos)",
+    "FM":  "Financial Market (mercados financieros)",
+    "STS": "Short-Term Statistics (estadísticas coyunturales)",
+}
+ECB_REF_AREA_ES = "ES"  # Código SDMX para España
+
+# Directorio ECB
+ECB_DIR = BASE_DIR / "ecb"
+
 # User-Agent para peticiones HTTP
 HTTP_HEADERS = {
     "User-Agent": "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/120.0.0.0 Safari/537.36",

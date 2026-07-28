@@ -1,0 +1,681 @@
+{
+  "flow": "STS",
+  "label": "Short-term stats Spain",
+  "has_es": true,
+  "fetched_at": "2026-07-28T07:00:17.302244+00:00",
+  "total_series": 8,
+  "series": [
+    {
+      "flow": "STS",
+      "dim_codes": [
+        "M",
+        "ES",
+        "W",
+        "CREG",
+        "CV0000",
+        "3",
+        "ABS"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "ES",
+        "ADJUSTMENT": "W",
+        "STS_CONCEPT": "CREG",
+        "STS_CLASS": "CV0000",
+        "STS_INSTITUTION": "3",
+        "STS_SUFFIX": "ABS"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Spain",
+        "ADJUSTMENT=Working day adjusted, not seasonally adjusted",
+        "STS_CONCEPT=Car registration",
+        "STS_CLASS=New commercial vehicles",
+        "STS_INSTITUTION=European Central Bank",
+        "STS_SUFFIX=Absolute value"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Spain | ADJUSTMENT=Working day adjusted, not seasonally adjusted | STS_CONCEPT=Car registration | STS_CLASS=New commercial vehicles | STS_INSTITUTION=European Central Bank | STS_SUFFIX=Absolute value",
+      "observations": [
+        {
+          "period": "2021-01",
+          "value": 12412
+        },
+        {
+          "period": "2021-02",
+          "value": 15024
+        },
+        {
+          "period": "2021-03",
+          "value": 18778
+        },
+        {
+          "period": "2021-04",
+          "value": 17512
+        },
+        {
+          "period": "2021-05",
+          "value": 19113
+        },
+        {
+          "period": "2021-06",
+          "value": 16558
+        },
+        {
+          "period": "2021-07",
+          "value": 15281
+        },
+        {
+          "period": "2021-08",
+          "value": 9144
+        },
+        {
+          "period": "2021-09",
+          "value": 11509
+        },
+        {
+          "period": "2021-10",
+          "value": 13798
+        },
+        {
+          "period": "2021-11",
+          "value": 12562
+        },
+        {
+          "period": "2021-12",
+          "value": 12374
+        }
+      ],
+      "last_value": 12374,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:17.302016+00:00"
+    },
+    {
+      "flow": "STS",
+      "dim_codes": [
+        "M",
+        "ES",
+        "W",
+        "CREG",
+        "CVH000",
+        "3",
+        "ABS"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "ES",
+        "ADJUSTMENT": "W",
+        "STS_CONCEPT": "CREG",
+        "STS_CLASS": "CVH000",
+        "STS_INSTITUTION": "3",
+        "STS_SUFFIX": "ABS"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Spain",
+        "ADJUSTMENT=Working day adjusted, not seasonally adjusted",
+        "STS_CONCEPT=Car registration",
+        "STS_CLASS=New heavy commercial vehicles",
+        "STS_INSTITUTION=European Central Bank",
+        "STS_SUFFIX=Absolute value"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Spain | ADJUSTMENT=Working day adjusted, not seasonally adjusted | STS_CONCEPT=Car registration | STS_CLASS=New heavy commercial vehicles | STS_INSTITUTION=European Central Bank | STS_SUFFIX=Absolute value",
+      "observations": [
+        {
+          "period": "2021-01",
+          "value": 2145
+        },
+        {
+          "period": "2021-02",
+          "value": 2009
+        },
+        {
+          "period": "2021-03",
+          "value": 2019
+        },
+        {
+          "period": "2021-04",
+          "value": 1758
+        },
+        {
+          "period": "2021-05",
+          "value": 2063
+        },
+        {
+          "period": "2021-06",
+          "value": 1636
+        },
+        {
+          "period": "2021-07",
+          "value": 1542
+        },
+        {
+          "period": "2021-08",
+          "value": 1037
+        },
+        {
+          "period": "2021-09",
+          "value": 1892
+        },
+        {
+          "period": "2021-10",
+          "value": 2717
+        },
+        {
+          "period": "2021-11",
+          "value": 2238
+        },
+        {
+          "period": "2021-12",
+          "value": 1662
+        }
+      ],
+      "last_value": 1662,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:17.302045+00:00"
+    },
+    {
+      "flow": "STS",
+      "dim_codes": [
+        "M",
+        "ES",
+        "W",
+        "CREG",
+        "CVL000",
+        "3",
+        "ABS"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "ES",
+        "ADJUSTMENT": "W",
+        "STS_CONCEPT": "CREG",
+        "STS_CLASS": "CVL000",
+        "STS_INSTITUTION": "3",
+        "STS_SUFFIX": "ABS"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Spain",
+        "ADJUSTMENT=Working day adjusted, not seasonally adjusted",
+        "STS_CONCEPT=Car registration",
+        "STS_CLASS=New light commercial vehicles",
+        "STS_INSTITUTION=European Central Bank",
+        "STS_SUFFIX=Absolute value"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Spain | ADJUSTMENT=Working day adjusted, not seasonally adjusted | STS_CONCEPT=Car registration | STS_CLASS=New light commercial vehicles | STS_INSTITUTION=European Central Bank | STS_SUFFIX=Absolute value",
+      "observations": [
+        {
+          "period": "2021-01",
+          "value": 10267
+        },
+        {
+          "period": "2021-02",
+          "value": 13015
+        },
+        {
+          "period": "2021-03",
+          "value": 16759
+        },
+        {
+          "period": "2021-04",
+          "value": 15754
+        },
+        {
+          "period": "2021-05",
+          "value": 17050
+        },
+        {
+          "period": "2021-06",
+          "value": 14922
+        },
+        {
+          "period": "2021-07",
+          "value": 13739
+        },
+        {
+          "period": "2021-08",
+          "value": 8107
+        },
+        {
+          "period": "2021-09",
+          "value": 9617
+        },
+        {
+          "period": "2021-10",
+          "value": 11081
+        },
+        {
+          "period": "2021-11",
+          "value": 10324
+        },
+        {
+          "period": "2021-12",
+          "value": 10712
+        }
+      ],
+      "last_value": 10712,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:17.302062+00:00"
+    },
+    {
+      "flow": "STS",
+      "dim_codes": [
+        "M",
+        "ES",
+        "W",
+        "CREG",
+        "PC0000",
+        "3",
+        "ABS"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "ES",
+        "ADJUSTMENT": "W",
+        "STS_CONCEPT": "CREG",
+        "STS_CLASS": "PC0000",
+        "STS_INSTITUTION": "3",
+        "STS_SUFFIX": "ABS"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Spain",
+        "ADJUSTMENT=Working day adjusted, not seasonally adjusted",
+        "STS_CONCEPT=Car registration",
+        "STS_CLASS=New passenger car",
+        "STS_INSTITUTION=European Central Bank",
+        "STS_SUFFIX=Absolute value"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Spain | ADJUSTMENT=Working day adjusted, not seasonally adjusted | STS_CONCEPT=Car registration | STS_CLASS=New passenger car | STS_INSTITUTION=European Central Bank | STS_SUFFIX=Absolute value",
+      "observations": [
+        {
+          "period": "2022-01",
+          "value": 43547
+        },
+        {
+          "period": "2022-02",
+          "value": 62338
+        },
+        {
+          "period": "2022-03",
+          "value": 55839
+        },
+        {
+          "period": "2022-04",
+          "value": 71581
+        },
+        {
+          "period": "2022-05",
+          "value": 85485
+        },
+        {
+          "period": "2022-06",
+          "value": 86233
+        },
+        {
+          "period": "2022-07",
+          "value": 76539
+        },
+        {
+          "period": "2022-08",
+          "value": 50653
+        },
+        {
+          "period": "2022-09",
+          "value": 65039
+        },
+        {
+          "period": "2022-10",
+          "value": 69701
+        },
+        {
+          "period": "2022-11",
+          "value": 72157
+        },
+        {
+          "period": "2022-12",
+          "value": 67344
+        }
+      ],
+      "last_value": 67344,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:17.302079+00:00"
+    },
+    {
+      "flow": "STS",
+      "dim_codes": [
+        "M",
+        "ES",
+        "Y",
+        "CREG",
+        "CV0000",
+        "3",
+        "ABS"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "ES",
+        "ADJUSTMENT": "Y",
+        "STS_CONCEPT": "CREG",
+        "STS_CLASS": "CV0000",
+        "STS_INSTITUTION": "3",
+        "STS_SUFFIX": "ABS"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Spain",
+        "ADJUSTMENT=Working day and seasonally adjusted",
+        "STS_CONCEPT=Car registration",
+        "STS_CLASS=New commercial vehicles",
+        "STS_INSTITUTION=European Central Bank",
+        "STS_SUFFIX=Absolute value"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Spain | ADJUSTMENT=Working day and seasonally adjusted | STS_CONCEPT=Car registration | STS_CLASS=New commercial vehicles | STS_INSTITUTION=European Central Bank | STS_SUFFIX=Absolute value",
+      "observations": [
+        {
+          "period": "2021-01",
+          "value": 13054
+        },
+        {
+          "period": "2021-02",
+          "value": 16260
+        },
+        {
+          "period": "2021-03",
+          "value": 18003
+        },
+        {
+          "period": "2021-04",
+          "value": 17324
+        },
+        {
+          "period": "2021-05",
+          "value": 17011
+        },
+        {
+          "period": "2021-06",
+          "value": 14409
+        },
+        {
+          "period": "2021-07",
+          "value": 13916
+        },
+        {
+          "period": "2021-08",
+          "value": 12054
+        },
+        {
+          "period": "2021-09",
+          "value": 13564
+        },
+        {
+          "period": "2021-10",
+          "value": 12411
+        },
+        {
+          "period": "2021-11",
+          "value": 12343
+        },
+        {
+          "period": "2021-12",
+          "value": 12988
+        }
+      ],
+      "last_value": 12988,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:17.302095+00:00"
+    },
+    {
+      "flow": "STS",
+      "dim_codes": [
+        "M",
+        "ES",
+        "Y",
+        "CREG",
+        "CVH000",
+        "3",
+        "ABS"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "ES",
+        "ADJUSTMENT": "Y",
+        "STS_CONCEPT": "CREG",
+        "STS_CLASS": "CVH000",
+        "STS_INSTITUTION": "3",
+        "STS_SUFFIX": "ABS"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Spain",
+        "ADJUSTMENT=Working day and seasonally adjusted",
+        "STS_CONCEPT=Car registration",
+        "STS_CLASS=New heavy commercial vehicles",
+        "STS_INSTITUTION=European Central Bank",
+        "STS_SUFFIX=Absolute value"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Spain | ADJUSTMENT=Working day and seasonally adjusted | STS_CONCEPT=Car registration | STS_CLASS=New heavy commercial vehicles | STS_INSTITUTION=European Central Bank | STS_SUFFIX=Absolute value",
+      "observations": [
+        {
+          "period": "2021-01",
+          "value": 1815
+        },
+        {
+          "period": "2021-02",
+          "value": 2294
+        },
+        {
+          "period": "2021-03",
+          "value": 2324
+        },
+        {
+          "period": "2021-04",
+          "value": 2107
+        },
+        {
+          "period": "2021-05",
+          "value": 2277
+        },
+        {
+          "period": "2021-06",
+          "value": 1834
+        },
+        {
+          "period": "2021-07",
+          "value": 1609
+        },
+        {
+          "period": "2021-08",
+          "value": 1501
+        },
+        {
+          "period": "2021-09",
+          "value": 1796
+        },
+        {
+          "period": "2021-10",
+          "value": 1702
+        },
+        {
+          "period": "2021-11",
+          "value": 1664
+        },
+        {
+          "period": "2021-12",
+          "value": 2011
+        }
+      ],
+      "last_value": 2011,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:17.302110+00:00"
+    },
+    {
+      "flow": "STS",
+      "dim_codes": [
+        "M",
+        "ES",
+        "Y",
+        "CREG",
+        "CVL000",
+        "3",
+        "ABS"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "ES",
+        "ADJUSTMENT": "Y",
+        "STS_CONCEPT": "CREG",
+        "STS_CLASS": "CVL000",
+        "STS_INSTITUTION": "3",
+        "STS_SUFFIX": "ABS"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Spain",
+        "ADJUSTMENT=Working day and seasonally adjusted",
+        "STS_CONCEPT=Car registration",
+        "STS_CLASS=New light commercial vehicles",
+        "STS_INSTITUTION=European Central Bank",
+        "STS_SUFFIX=Absolute value"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Spain | ADJUSTMENT=Working day and seasonally adjusted | STS_CONCEPT=Car registration | STS_CLASS=New light commercial vehicles | STS_INSTITUTION=European Central Bank | STS_SUFFIX=Absolute value",
+      "observations": [
+        {
+          "period": "2021-01",
+          "value": 11239
+        },
+        {
+          "period": "2021-02",
+          "value": 13966
+        },
+        {
+          "period": "2021-03",
+          "value": 15679
+        },
+        {
+          "period": "2021-04",
+          "value": 15217
+        },
+        {
+          "period": "2021-05",
+          "value": 14734
+        },
+        {
+          "period": "2021-06",
+          "value": 12575
+        },
+        {
+          "period": "2021-07",
+          "value": 12307
+        },
+        {
+          "period": "2021-08",
+          "value": 10553
+        },
+        {
+          "period": "2021-09",
+          "value": 11768
+        },
+        {
+          "period": "2021-10",
+          "value": 10709
+        },
+        {
+          "period": "2021-11",
+          "value": 10679
+        },
+        {
+          "period": "2021-12",
+          "value": 10977
+        }
+      ],
+      "last_value": 10977,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:17.302126+00:00"
+    },
+    {
+      "flow": "STS",
+      "dim_codes": [
+        "M",
+        "ES",
+        "Y",
+        "CREG",
+        "PC0000",
+        "3",
+        "ABS"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "ES",
+        "ADJUSTMENT": "Y",
+        "STS_CONCEPT": "CREG",
+        "STS_CLASS": "PC0000",
+        "STS_INSTITUTION": "3",
+        "STS_SUFFIX": "ABS"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Spain",
+        "ADJUSTMENT=Working day and seasonally adjusted",
+        "STS_CONCEPT=Car registration",
+        "STS_CLASS=New passenger car",
+        "STS_INSTITUTION=European Central Bank",
+        "STS_SUFFIX=Absolute value"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Spain | ADJUSTMENT=Working day and seasonally adjusted | STS_CONCEPT=Car registration | STS_CLASS=New passenger car | STS_INSTITUTION=European Central Bank | STS_SUFFIX=Absolute value",
+      "observations": [
+        {
+          "period": "2022-01",
+          "value": 55147
+        },
+        {
+          "period": "2022-02",
+          "value": 67555
+        },
+        {
+          "period": "2022-03",
+          "value": 47725
+        },
+        {
+          "period": "2022-04",
+          "value": 65299
+        },
+        {
+          "period": "2022-05",
+          "value": 70746
+        },
+        {
+          "period": "2022-06",
+          "value": 64094
+        },
+        {
+          "period": "2022-07",
+          "value": 64384
+        },
+        {
+          "period": "2022-08",
+          "value": 69067
+        },
+        {
+          "period": "2022-09",
+          "value": 83693
+        },
+        {
+          "period": "2022-10",
+          "value": 84063
+        },
+        {
+          "period": "2022-11",
+          "value": 81365
+        },
+        {
+          "period": "2022-12",
+          "value": 63571
+        }
+      ],
+      "last_value": 63571,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:17.302141+00:00"
+    }
+  ]
+}

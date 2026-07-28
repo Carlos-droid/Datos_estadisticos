@@ -1,0 +1,2109 @@
+{
+  "flow": "FM",
+  "label": "Financial markets (euro area)",
+  "has_es": false,
+  "fetched_at": "2026-07-28T07:00:39.066878+00:00",
+  "total_series": 25,
+  "series": [
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "DS",
+        "EI",
+        "DJES50I",
+        "HSTA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "DS",
+        "INSTRUMENT_FM": "EI",
+        "PROVIDER_FM_ID": "DJES50I",
+        "DATA_TYPE_FM": "HSTA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=DataStream",
+        "INSTRUMENT_FM=Equity/index",
+        "PROVIDER_FM_ID=EURO STOXX 50 Equity Index",
+        "DATA_TYPE_FM=Historical close, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=DataStream | INSTRUMENT_FM=Equity/index | PROVIDER_FM_ID=EURO STOXX 50 Equity Index | DATA_TYPE_FM=Historical close, average of observations through period",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 5351.6696087
+        },
+        {
+          "period": "2025-08",
+          "value": 5373.7999524
+        },
+        {
+          "period": "2025-09",
+          "value": 5408.0214091
+        },
+        {
+          "period": "2025-10",
+          "value": 5641.0701304
+        },
+        {
+          "period": "2025-11",
+          "value": 5634.12635
+        },
+        {
+          "period": "2025-12",
+          "value": 5730.9314286
+        },
+        {
+          "period": "2026-02",
+          "value": 6051.7261
+        },
+        {
+          "period": "2026-03",
+          "value": 5693.7882273
+        },
+        {
+          "period": "2026-04",
+          "value": 5880.35645
+        },
+        {
+          "period": "2026-05",
+          "value": 5942.2264762
+        },
+        {
+          "period": "2026-06",
+          "value": 6178.9555909
+        },
+        {
+          "period": "2026-01",
+          "value": 5951.5963333
+        }
+      ],
+      "last_value": 5951.5963333,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.063109+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "DS",
+        "EI",
+        "S1ESBME",
+        "HSTA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "DS",
+        "INSTRUMENT_FM": "EI",
+        "PROVIDER_FM_ID": "S1ESBME",
+        "DATA_TYPE_FM": "HSTA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=DataStream",
+        "INSTRUMENT_FM=Equity/index",
+        "PROVIDER_FM_ID=EURO STOXX BASIC MATERIALS EURO Equity Index",
+        "DATA_TYPE_FM=Historical close, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=DataStream | INSTRUMENT_FM=Equity/index | PROVIDER_FM_ID=EURO STOXX BASIC MATERIALS EURO Equity Index | DATA_TYPE_FM=Historical close, average of observations through period",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 957.9661739
+        },
+        {
+          "period": "2025-08",
+          "value": 964.4930476
+        },
+        {
+          "period": "2025-09",
+          "value": 947.5825
+        },
+        {
+          "period": "2025-10",
+          "value": 940.9047826
+        },
+        {
+          "period": "2025-11",
+          "value": 927.1512
+        },
+        {
+          "period": "2025-12",
+          "value": 921.246381
+        },
+        {
+          "period": "2026-02",
+          "value": 1028.371
+        },
+        {
+          "period": "2026-03",
+          "value": 978.4130455
+        },
+        {
+          "period": "2026-04",
+          "value": 1051.5996
+        },
+        {
+          "period": "2026-05",
+          "value": 1048.192619
+        },
+        {
+          "period": "2026-06",
+          "value": 1056.1697727
+        },
+        {
+          "period": "2026-01",
+          "value": 940.4317143
+        }
+      ],
+      "last_value": 940.4317143,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.063160+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "DS",
+        "EI",
+        "S1ESCSE",
+        "HSTA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "DS",
+        "INSTRUMENT_FM": "EI",
+        "PROVIDER_FM_ID": "S1ESCSE",
+        "DATA_TYPE_FM": "HSTA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=DataStream",
+        "INSTRUMENT_FM=Equity/index",
+        "PROVIDER_FM_ID=EURO STOXX Consumer discretionary",
+        "DATA_TYPE_FM=Historical close, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=DataStream | INSTRUMENT_FM=Equity/index | PROVIDER_FM_ID=EURO STOXX Consumer discretionary | DATA_TYPE_FM=Historical close, average of observations through period",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 261.0854783
+        },
+        {
+          "period": "2025-08",
+          "value": 254.5739048
+        },
+        {
+          "period": "2025-09",
+          "value": 257.7933182
+        },
+        {
+          "period": "2025-10",
+          "value": 266.5861304
+        },
+        {
+          "period": "2025-11",
+          "value": 266.58055
+        },
+        {
+          "period": "2025-12",
+          "value": 274.8743333
+        },
+        {
+          "period": "2026-02",
+          "value": 262.5881
+        },
+        {
+          "period": "2026-03",
+          "value": 237.0095
+        },
+        {
+          "period": "2026-04",
+          "value": 239.455
+        },
+        {
+          "period": "2026-05",
+          "value": 237.4769524
+        },
+        {
+          "period": "2026-06",
+          "value": 245.9747727
+        },
+        {
+          "period": "2026-01",
+          "value": 271.3379524
+        }
+      ],
+      "last_value": 271.3379524,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.063219+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "DS",
+        "EI",
+        "S1ESCGE",
+        "HSTA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "DS",
+        "INSTRUMENT_FM": "EI",
+        "PROVIDER_FM_ID": "S1ESCGE",
+        "DATA_TYPE_FM": "HSTA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=DataStream",
+        "INSTRUMENT_FM=Equity/index",
+        "PROVIDER_FM_ID=EURO STOXX Consumer staples",
+        "DATA_TYPE_FM=Historical close, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=DataStream | INSTRUMENT_FM=Equity/index | PROVIDER_FM_ID=EURO STOXX Consumer staples | DATA_TYPE_FM=Historical close, average of observations through period",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 157.1698261
+        },
+        {
+          "period": "2025-08",
+          "value": 152.4311429
+        },
+        {
+          "period": "2025-09",
+          "value": 148.5847727
+        },
+        {
+          "period": "2025-10",
+          "value": 150.6323478
+        },
+        {
+          "period": "2025-11",
+          "value": 152.1341
+        },
+        {
+          "period": "2025-12",
+          "value": 150.2349048
+        },
+        {
+          "period": "2026-02",
+          "value": 162.54735
+        },
+        {
+          "period": "2026-03",
+          "value": 154.5544091
+        },
+        {
+          "period": "2026-04",
+          "value": 154.27065
+        },
+        {
+          "period": "2026-05",
+          "value": 155.1182381
+        },
+        {
+          "period": "2026-06",
+          "value": 158.3184091
+        },
+        {
+          "period": "2026-01",
+          "value": 150.5315714
+        }
+      ],
+      "last_value": 150.5315714,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.063194+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "DS",
+        "EI",
+        "S1ESO1E",
+        "HSTA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "DS",
+        "INSTRUMENT_FM": "EI",
+        "PROVIDER_FM_ID": "S1ESO1E",
+        "DATA_TYPE_FM": "HSTA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=DataStream",
+        "INSTRUMENT_FM=Equity/index",
+        "PROVIDER_FM_ID=EURO STOXX ENERGY EURO Equity Index",
+        "DATA_TYPE_FM=Historical close, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=DataStream | INSTRUMENT_FM=Equity/index | PROVIDER_FM_ID=EURO STOXX ENERGY EURO Equity Index | DATA_TYPE_FM=Historical close, average of observations through period",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 137.2308261
+        },
+        {
+          "period": "2025-08",
+          "value": 139.359619
+        },
+        {
+          "period": "2025-09",
+          "value": 138.7811818
+        },
+        {
+          "period": "2025-10",
+          "value": 143.1642609
+        },
+        {
+          "period": "2025-11",
+          "value": 150.54185
+        },
+        {
+          "period": "2025-12",
+          "value": 153.7662857
+        },
+        {
+          "period": "2026-02",
+          "value": 184.88455
+        },
+        {
+          "period": "2026-03",
+          "value": 201.2087273
+        },
+        {
+          "period": "2026-04",
+          "value": 214.2018
+        },
+        {
+          "period": "2026-05",
+          "value": 217.8334762
+        },
+        {
+          "period": "2026-06",
+          "value": 204.7741818
+        },
+        {
+          "period": "2026-01",
+          "value": 162.5466667
+        }
+      ],
+      "last_value": 162.5466667,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.063332+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "DS",
+        "EI",
+        "DJEURST",
+        "HSTA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "DS",
+        "INSTRUMENT_FM": "EI",
+        "PROVIDER_FM_ID": "DJEURST",
+        "DATA_TYPE_FM": "HSTA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=DataStream",
+        "INSTRUMENT_FM=Equity/index",
+        "PROVIDER_FM_ID=EURO STOXX Equity Index",
+        "DATA_TYPE_FM=Historical close, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=DataStream | INSTRUMENT_FM=Equity/index | PROVIDER_FM_ID=EURO STOXX Equity Index | DATA_TYPE_FM=Historical close, average of observations through period",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 566.6731304
+        },
+        {
+          "period": "2025-08",
+          "value": 571.933619
+        },
+        {
+          "period": "2025-09",
+          "value": 572.8193636
+        },
+        {
+          "period": "2025-10",
+          "value": 594.3758261
+        },
+        {
+          "period": "2025-11",
+          "value": 593.5356
+        },
+        {
+          "period": "2025-12",
+          "value": 604.3872857
+        },
+        {
+          "period": "2026-02",
+          "value": 640.8729
+        },
+        {
+          "period": "2026-03",
+          "value": 606.15
+        },
+        {
+          "period": "2026-04",
+          "value": 629.5275
+        },
+        {
+          "period": "2026-05",
+          "value": 638.093
+        },
+        {
+          "period": "2026-06",
+          "value": 659.803
+        },
+        {
+          "period": "2026-01",
+          "value": 628.101381
+        }
+      ],
+      "last_value": 628.101381,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.063136+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "DS",
+        "EI",
+        "S1ESFNE",
+        "HSTA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "DS",
+        "INSTRUMENT_FM": "EI",
+        "PROVIDER_FM_ID": "S1ESFNE",
+        "DATA_TYPE_FM": "HSTA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=DataStream",
+        "INSTRUMENT_FM=Equity/index",
+        "PROVIDER_FM_ID=EURO STOXX FINANCIALS EURO Equity Index",
+        "DATA_TYPE_FM=Historical close, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=DataStream | INSTRUMENT_FM=Equity/index | PROVIDER_FM_ID=EURO STOXX FINANCIALS EURO Equity Index | DATA_TYPE_FM=Historical close, average of observations through period",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 324.338913
+        },
+        {
+          "period": "2025-08",
+          "value": 348.0803333
+        },
+        {
+          "period": "2025-09",
+          "value": 344.7055
+        },
+        {
+          "period": "2025-10",
+          "value": 345.178087
+        },
+        {
+          "period": "2025-11",
+          "value": 353.11095
+        },
+        {
+          "period": "2025-12",
+          "value": 372.7046667
+        },
+        {
+          "period": "2026-02",
+          "value": 388.4551
+        },
+        {
+          "period": "2026-03",
+          "value": 358.9338636
+        },
+        {
+          "period": "2026-04",
+          "value": 382.7896
+        },
+        {
+          "period": "2026-05",
+          "value": 384.8529048
+        },
+        {
+          "period": "2026-06",
+          "value": 402.7042273
+        },
+        {
+          "period": "2026-01",
+          "value": 385.3236667
+        }
+      ],
+      "last_value": 385.3236667,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.063239+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "DS",
+        "EI",
+        "S1ESH1E",
+        "HSTA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "DS",
+        "INSTRUMENT_FM": "EI",
+        "PROVIDER_FM_ID": "S1ESH1E",
+        "DATA_TYPE_FM": "HSTA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=DataStream",
+        "INSTRUMENT_FM=Equity/index",
+        "PROVIDER_FM_ID=EURO STOXX HEALTH CARE E Equity Index",
+        "DATA_TYPE_FM=Historical close, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=DataStream | INSTRUMENT_FM=Equity/index | PROVIDER_FM_ID=EURO STOXX HEALTH CARE E Equity Index | DATA_TYPE_FM=Historical close, average of observations through period",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 805.9487826
+        },
+        {
+          "period": "2025-08",
+          "value": 835.549
+        },
+        {
+          "period": "2025-09",
+          "value": 840.5036818
+        },
+        {
+          "period": "2025-10",
+          "value": 905.012913
+        },
+        {
+          "period": "2025-11",
+          "value": 912.9998
+        },
+        {
+          "period": "2025-12",
+          "value": 902.9427143
+        },
+        {
+          "period": "2026-02",
+          "value": 903.5284
+        },
+        {
+          "period": "2026-03",
+          "value": 821.7886364
+        },
+        {
+          "period": "2026-04",
+          "value": 829.4681
+        },
+        {
+          "period": "2026-05",
+          "value": 786.0190952
+        },
+        {
+          "period": "2026-06",
+          "value": 805.5401364
+        },
+        {
+          "period": "2026-01",
+          "value": 908.507
+        }
+      ],
+      "last_value": 908.507,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.063285+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "DS",
+        "EI",
+        "S1ESIDE",
+        "HSTA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "DS",
+        "INSTRUMENT_FM": "EI",
+        "PROVIDER_FM_ID": "S1ESIDE",
+        "DATA_TYPE_FM": "HSTA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=DataStream",
+        "INSTRUMENT_FM=Equity/index",
+        "PROVIDER_FM_ID=EURO STOXX INDUSTRIALS E Equity Index",
+        "DATA_TYPE_FM=Historical close, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=DataStream | INSTRUMENT_FM=Equity/index | PROVIDER_FM_ID=EURO STOXX INDUSTRIALS E Equity Index | DATA_TYPE_FM=Historical close, average of observations through period",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 1192.3565652
+        },
+        {
+          "period": "2025-08",
+          "value": 1188.0142381
+        },
+        {
+          "period": "2025-09",
+          "value": 1198.5571818
+        },
+        {
+          "period": "2025-10",
+          "value": 1246.882913
+        },
+        {
+          "period": "2025-11",
+          "value": 1210.93675
+        },
+        {
+          "period": "2025-12",
+          "value": 1214.5098571
+        },
+        {
+          "period": "2026-02",
+          "value": 1294.0512
+        },
+        {
+          "period": "2026-03",
+          "value": 1194.8684091
+        },
+        {
+          "period": "2026-04",
+          "value": 1235.8112
+        },
+        {
+          "period": "2026-05",
+          "value": 1246.4172381
+        },
+        {
+          "period": "2026-06",
+          "value": 1262.4515455
+        },
+        {
+          "period": "2026-01",
+          "value": 1281.0412857
+        }
+      ],
+      "last_value": 1281.0412857,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.063307+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "DS",
+        "EI",
+        "S1ESG1E",
+        "HSTA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "DS",
+        "INSTRUMENT_FM": "EI",
+        "PROVIDER_FM_ID": "S1ESG1E",
+        "DATA_TYPE_FM": "HSTA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=DataStream",
+        "INSTRUMENT_FM=Equity/index",
+        "PROVIDER_FM_ID=EURO STOXX TECHNOLOGY E Equity Index",
+        "DATA_TYPE_FM=Historical close, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=DataStream | INSTRUMENT_FM=Equity/index | PROVIDER_FM_ID=EURO STOXX TECHNOLOGY E Equity Index | DATA_TYPE_FM=Historical close, average of observations through period",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 1098.1746522
+        },
+        {
+          "period": "2025-08",
+          "value": 1048.481
+        },
+        {
+          "period": "2025-09",
+          "value": 1082.9537727
+        },
+        {
+          "period": "2025-10",
+          "value": 1194.4562609
+        },
+        {
+          "period": "2025-11",
+          "value": 1153.5521
+        },
+        {
+          "period": "2025-12",
+          "value": 1167.1354762
+        },
+        {
+          "period": "2026-02",
+          "value": 1265.9005
+        },
+        {
+          "period": "2026-03",
+          "value": 1213.6356364
+        },
+        {
+          "period": "2026-04",
+          "value": 1252.9085
+        },
+        {
+          "period": "2026-05",
+          "value": 1373.9875714
+        },
+        {
+          "period": "2026-06",
+          "value": 1548.8758636
+        },
+        {
+          "period": "2026-01",
+          "value": 1284.1295238
+        }
+      ],
+      "last_value": 1284.1295238,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.063264+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "DS",
+        "EI",
+        "S1EST1E",
+        "HSTA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "DS",
+        "INSTRUMENT_FM": "EI",
+        "PROVIDER_FM_ID": "S1EST1E",
+        "DATA_TYPE_FM": "HSTA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=DataStream",
+        "INSTRUMENT_FM=Equity/index",
+        "PROVIDER_FM_ID=EURO STOXX TELECOM E Equity Index",
+        "DATA_TYPE_FM=Historical close, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=DataStream | INSTRUMENT_FM=Equity/index | PROVIDER_FM_ID=EURO STOXX TELECOM E Equity Index | DATA_TYPE_FM=Historical close, average of observations through period",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 358.4776522
+        },
+        {
+          "period": "2025-08",
+          "value": 357.3959048
+        },
+        {
+          "period": "2025-09",
+          "value": 350.4213182
+        },
+        {
+          "period": "2025-10",
+          "value": 354.1381304
+        },
+        {
+          "period": "2025-11",
+          "value": 339.9637
+        },
+        {
+          "period": "2025-12",
+          "value": 337.5689048
+        },
+        {
+          "period": "2026-02",
+          "value": 390.52315
+        },
+        {
+          "period": "2026-03",
+          "value": 402.4739091
+        },
+        {
+          "period": "2026-04",
+          "value": 400.34155
+        },
+        {
+          "period": "2026-05",
+          "value": 426.1620476
+        },
+        {
+          "period": "2026-06",
+          "value": 419.6205
+        },
+        {
+          "period": "2026-01",
+          "value": 343.522381
+        }
+      ],
+      "last_value": 343.522381,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.063356+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "DS",
+        "EI",
+        "S1ESU1E",
+        "HSTA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "DS",
+        "INSTRUMENT_FM": "EI",
+        "PROVIDER_FM_ID": "S1ESU1E",
+        "DATA_TYPE_FM": "HSTA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=DataStream",
+        "INSTRUMENT_FM=Equity/index",
+        "PROVIDER_FM_ID=EURO STOXX UTILITIES EURO Equity Index",
+        "DATA_TYPE_FM=Historical close, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=DataStream | INSTRUMENT_FM=Equity/index | PROVIDER_FM_ID=EURO STOXX UTILITIES EURO Equity Index | DATA_TYPE_FM=Historical close, average of observations through period",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 454.5532609
+        },
+        {
+          "period": "2025-08",
+          "value": 452.3321429
+        },
+        {
+          "period": "2025-09",
+          "value": 445.7599545
+        },
+        {
+          "period": "2025-10",
+          "value": 478.4050435
+        },
+        {
+          "period": "2025-11",
+          "value": 499.3656
+        },
+        {
+          "period": "2025-12",
+          "value": 498.2544762
+        },
+        {
+          "period": "2026-02",
+          "value": 559.5199
+        },
+        {
+          "period": "2026-03",
+          "value": 561.9331364
+        },
+        {
+          "period": "2026-04",
+          "value": 584.30095
+        },
+        {
+          "period": "2026-05",
+          "value": 569.5537619
+        },
+        {
+          "period": "2026-06",
+          "value": 576.0445455
+        },
+        {
+          "period": "2026-01",
+          "value": 526.6447143
+        }
+      ],
+      "last_value": 526.6447143,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.063377+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "4F",
+        "BB",
+        "U2_10Y",
+        "YLD"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "4F",
+        "INSTRUMENT_FM": "BB",
+        "PROVIDER_FM_ID": "U2_10Y",
+        "DATA_TYPE_FM": "YLD"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=ECB",
+        "INSTRUMENT_FM=Benchmark bond",
+        "PROVIDER_FM_ID=Euro Area 10 Years Government Benchmark Bond",
+        "DATA_TYPE_FM=Yield"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=ECB | INSTRUMENT_FM=Benchmark bond | PROVIDER_FM_ID=Euro Area 10 Years Government Benchmark Bond | DATA_TYPE_FM=Yield",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 3.1735630435
+        },
+        {
+          "period": "2025-08",
+          "value": 3.2050457143
+        },
+        {
+          "period": "2025-09",
+          "value": 3.2330461969
+        },
+        {
+          "period": "2025-10",
+          "value": 3.1240674
+        },
+        {
+          "period": "2025-11",
+          "value": 3.1362825
+        },
+        {
+          "period": "2025-12",
+          "value": 3.2447326
+        },
+        {
+          "period": "2026-02",
+          "value": 3.1288495
+        },
+        {
+          "period": "2026-03",
+          "value": 3.3857227
+        },
+        {
+          "period": "2026-04",
+          "value": 3.4636927
+        },
+        {
+          "period": "2026-05",
+          "value": 3.4904848
+        },
+        {
+          "period": "2026-06",
+          "value": 3.40231
+        },
+        {
+          "period": "2026-01",
+          "value": 3.2209841
+        }
+      ],
+      "last_value": 3.2209841,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.062794+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "4F",
+        "BB",
+        "U2_2Y",
+        "YLD"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "4F",
+        "INSTRUMENT_FM": "BB",
+        "PROVIDER_FM_ID": "U2_2Y",
+        "DATA_TYPE_FM": "YLD"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=ECB",
+        "INSTRUMENT_FM=Benchmark bond",
+        "PROVIDER_FM_ID=Euro Area 2 Years Government Benchmark Bond",
+        "DATA_TYPE_FM=Yield"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=ECB | INSTRUMENT_FM=Benchmark bond | PROVIDER_FM_ID=Euro Area 2 Years Government Benchmark Bond | DATA_TYPE_FM=Yield",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 1.9829752174
+        },
+        {
+          "period": "2025-08",
+          "value": 2.0449966667
+        },
+        {
+          "period": "2025-09",
+          "value": 2.0852618587
+        },
+        {
+          "period": "2025-10",
+          "value": 2.0735895652
+        },
+        {
+          "period": "2025-11",
+          "value": 2.122252
+        },
+        {
+          "period": "2025-12",
+          "value": 2.2227243478
+        },
+        {
+          "period": "2026-02",
+          "value": 2.1229345
+        },
+        {
+          "period": "2026-03",
+          "value": 2.5586705
+        },
+        {
+          "period": "2026-04",
+          "value": 2.6981491
+        },
+        {
+          "period": "2026-05",
+          "value": 2.74772
+        },
+        {
+          "period": "2026-06",
+          "value": 2.7228814
+        },
+        {
+          "period": "2026-01",
+          "value": 2.1690804545
+        }
+      ],
+      "last_value": 2.1690804545,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.062824+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "4F",
+        "BB",
+        "U2_3Y",
+        "YLD"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "4F",
+        "INSTRUMENT_FM": "BB",
+        "PROVIDER_FM_ID": "U2_3Y",
+        "DATA_TYPE_FM": "YLD"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=ECB",
+        "INSTRUMENT_FM=Benchmark bond",
+        "PROVIDER_FM_ID=Euro Area 3 Years Government Benchmark Bond",
+        "DATA_TYPE_FM=Yield"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=ECB | INSTRUMENT_FM=Benchmark bond | PROVIDER_FM_ID=Euro Area 3 Years Government Benchmark Bond | DATA_TYPE_FM=Yield",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 2.1545308696
+        },
+        {
+          "period": "2025-08",
+          "value": 2.19314
+        },
+        {
+          "period": "2025-09",
+          "value": 2.2205436951
+        },
+        {
+          "period": "2025-10",
+          "value": 2.1896165217
+        },
+        {
+          "period": "2025-11",
+          "value": 2.248797
+        },
+        {
+          "period": "2025-12",
+          "value": 2.367263913
+        },
+        {
+          "period": "2026-02",
+          "value": 2.2882835
+        },
+        {
+          "period": "2026-03",
+          "value": 2.7035723
+        },
+        {
+          "period": "2026-04",
+          "value": 2.8015682
+        },
+        {
+          "period": "2026-05",
+          "value": 2.836
+        },
+        {
+          "period": "2026-06",
+          "value": 2.7884227
+        },
+        {
+          "period": "2026-01",
+          "value": 2.3350304545
+        }
+      ],
+      "last_value": 2.3350304545,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.062853+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "4F",
+        "BB",
+        "U2_5Y",
+        "YLD"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "4F",
+        "INSTRUMENT_FM": "BB",
+        "PROVIDER_FM_ID": "U2_5Y",
+        "DATA_TYPE_FM": "YLD"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=ECB",
+        "INSTRUMENT_FM=Benchmark bond",
+        "PROVIDER_FM_ID=Euro Area 5 Years Government Benchmark Bond",
+        "DATA_TYPE_FM=Yield"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=ECB | INSTRUMENT_FM=Benchmark bond | PROVIDER_FM_ID=Euro Area 5 Years Government Benchmark Bond | DATA_TYPE_FM=Yield",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 2.5169517391
+        },
+        {
+          "period": "2025-08",
+          "value": 2.5748938095
+        },
+        {
+          "period": "2025-09",
+          "value": 2.5991948288
+        },
+        {
+          "period": "2025-10",
+          "value": 2.5240265
+        },
+        {
+          "period": "2025-11",
+          "value": 2.569441
+        },
+        {
+          "period": "2025-12",
+          "value": 2.6965486957
+        },
+        {
+          "period": "2026-02",
+          "value": 2.549148
+        },
+        {
+          "period": "2026-03",
+          "value": 2.8909736
+        },
+        {
+          "period": "2026-04",
+          "value": 2.9775645
+        },
+        {
+          "period": "2026-05",
+          "value": 3.0102881
+        },
+        {
+          "period": "2026-06",
+          "value": 2.9750614
+        },
+        {
+          "period": "2026-01",
+          "value": 2.6481240909
+        }
+      ],
+      "last_value": 2.6481240909,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.062884+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "4F",
+        "BB",
+        "U2_7Y",
+        "YLD"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "4F",
+        "INSTRUMENT_FM": "BB",
+        "PROVIDER_FM_ID": "U2_7Y",
+        "DATA_TYPE_FM": "YLD"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=ECB",
+        "INSTRUMENT_FM=Benchmark bond",
+        "PROVIDER_FM_ID=Euro Area 7 Years Government Benchmark Bond",
+        "DATA_TYPE_FM=Yield"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=ECB | INSTRUMENT_FM=Benchmark bond | PROVIDER_FM_ID=Euro Area 7 Years Government Benchmark Bond | DATA_TYPE_FM=Yield",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 2.7439995652
+        },
+        {
+          "period": "2025-08",
+          "value": 2.7715190476
+        },
+        {
+          "period": "2025-09",
+          "value": 2.7938035477
+        },
+        {
+          "period": "2025-10",
+          "value": 2.7408830435
+        },
+        {
+          "period": "2025-11",
+          "value": 2.7752905
+        },
+        {
+          "period": "2025-12",
+          "value": 2.93577
+        },
+        {
+          "period": "2026-02",
+          "value": 2.8138755
+        },
+        {
+          "period": "2026-03",
+          "value": 3.0978
+        },
+        {
+          "period": "2026-04",
+          "value": 3.179595
+        },
+        {
+          "period": "2026-05",
+          "value": 3.188069
+        },
+        {
+          "period": "2026-06",
+          "value": 3.1320382
+        },
+        {
+          "period": "2026-01",
+          "value": 2.9027386364
+        }
+      ],
+      "last_value": 2.9027386364,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.062909+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "4F",
+        "BB",
+        "R_U2_10Y",
+        "YLDA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "4F",
+        "INSTRUMENT_FM": "BB",
+        "PROVIDER_FM_ID": "R_U2_10Y",
+        "DATA_TYPE_FM": "YLDA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=ECB",
+        "INSTRUMENT_FM=Benchmark bond",
+        "PROVIDER_FM_ID=Real Euro area 10-year Government Benchmark bond yield",
+        "DATA_TYPE_FM=Yield, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=ECB | INSTRUMENT_FM=Benchmark bond | PROVIDER_FM_ID=Real Euro area 10-year Government Benchmark bond yield | DATA_TYPE_FM=Yield, average of observations through period",
+      "observations": [
+        {
+          "period": "2025-06",
+          "value": 1.0847608024775814
+        },
+        {
+          "period": "2025-07",
+          "value": 1.17356312802269
+        },
+        {
+          "period": "2025-08",
+          "value": 1.2050460862455745
+        },
+        {
+          "period": "2025-09",
+          "value": 1.0330461968873164
+        },
+        {
+          "period": "2025-10",
+          "value": 1.02407
+        },
+        {
+          "period": "2025-11",
+          "value": 1.03628
+        },
+        {
+          "period": "2025-12",
+          "value": 1.34473
+        },
+        {
+          "period": "2026-02",
+          "value": 1.22885
+        },
+        {
+          "period": "2026-03",
+          "value": 0.78572
+        },
+        {
+          "period": "2026-04",
+          "value": 0.46369
+        },
+        {
+          "period": "2026-05",
+          "value": 0.29048
+        },
+        {
+          "period": "2026-06",
+          "value": 0.60231
+        }
+      ],
+      "last_value": 0.60231,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.062739+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "4F",
+        "MM",
+        "EONIA",
+        "HSTA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "4F",
+        "INSTRUMENT_FM": "MM",
+        "PROVIDER_FM_ID": "EONIA",
+        "DATA_TYPE_FM": "HSTA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=ECB",
+        "INSTRUMENT_FM=Money Market",
+        "PROVIDER_FM_ID=Eonia rate",
+        "DATA_TYPE_FM=Historical close, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=ECB | INSTRUMENT_FM=Money Market | PROVIDER_FM_ID=Eonia rate | DATA_TYPE_FM=Historical close, average of observations through period",
+      "observations": [
+        {
+          "period": "2021-01",
+          "value": -0.47835
+        },
+        {
+          "period": "2021-02",
+          "value": -0.4787499999999999
+        },
+        {
+          "period": "2021-03",
+          "value": -0.4793478260869565
+        },
+        {
+          "period": "2021-04",
+          "value": -0.4807999999999999
+        },
+        {
+          "period": "2021-05",
+          "value": -0.47971428571428565
+        },
+        {
+          "period": "2021-06",
+          "value": -0.4795909090909092
+        },
+        {
+          "period": "2021-07",
+          "value": -0.4812272727272726
+        },
+        {
+          "period": "2021-08",
+          "value": -0.4829090909090908
+        },
+        {
+          "period": "2021-09",
+          "value": -0.48504545454545445
+        },
+        {
+          "period": "2021-10",
+          "value": -0.48557142857142843
+        },
+        {
+          "period": "2021-11",
+          "value": -0.4879999999999999
+        },
+        {
+          "period": "2021-12",
+          "value": -0.4922173913043477
+        }
+      ],
+      "last_value": -0.4922173913043477,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.062942+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "4F",
+        "MM",
+        "R_EURIBOR3MD_",
+        "HSTA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "4F",
+        "INSTRUMENT_FM": "MM",
+        "PROVIDER_FM_ID": "R_EURIBOR3MD_",
+        "DATA_TYPE_FM": "HSTA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=ECB",
+        "INSTRUMENT_FM=Money Market",
+        "PROVIDER_FM_ID=Real 3-month Euribor (Euro Interbank Offered Rate)",
+        "DATA_TYPE_FM=Historical close, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=ECB | INSTRUMENT_FM=Money Market | PROVIDER_FM_ID=Real 3-month Euribor (Euro Interbank Offered Rate) | DATA_TYPE_FM=Historical close, average of observations through period",
+      "observations": [
+        {
+          "period": "2025-06",
+          "value": -0.016380952380952163
+        },
+        {
+          "period": "2025-07",
+          "value": -0.013652173913043075
+        },
+        {
+          "period": "2025-08",
+          "value": 0.02109523809523761
+        },
+        {
+          "period": "2025-09",
+          "value": -0.17272727272727328
+        },
+        {
+          "period": "2025-10",
+          "value": -0.06557
+        },
+        {
+          "period": "2025-11",
+          "value": -0.05835
+        },
+        {
+          "period": "2025-12",
+          "value": 0.14843
+        },
+        {
+          "period": "2026-02",
+          "value": 0.1113
+        },
+        {
+          "period": "2026-03",
+          "value": -0.49059
+        },
+        {
+          "period": "2026-04",
+          "value": -0.8247
+        },
+        {
+          "period": "2026-05",
+          "value": -0.9739
+        },
+        {
+          "period": "2026-06",
+          "value": -0.461
+        }
+      ],
+      "last_value": -0.461,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.062967+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "4F",
+        "MM",
+        "UONSTR",
+        "HSTA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "4F",
+        "INSTRUMENT_FM": "MM",
+        "PROVIDER_FM_ID": "UONSTR",
+        "DATA_TYPE_FM": "HSTA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=ECB",
+        "INSTRUMENT_FM=Money Market",
+        "PROVIDER_FM_ID=Unsecured - overnight - short-term rate",
+        "DATA_TYPE_FM=Historical close, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=ECB | INSTRUMENT_FM=Money Market | PROVIDER_FM_ID=Unsecured - overnight - short-term rate | DATA_TYPE_FM=Historical close, average of observations through period",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 1.9223043478
+        },
+        {
+          "period": "2025-08",
+          "value": 1.924
+        },
+        {
+          "period": "2025-09",
+          "value": 1.9245454545
+        },
+        {
+          "period": "2025-10",
+          "value": 1.926826087
+        },
+        {
+          "period": "2025-11",
+          "value": 1.92895
+        },
+        {
+          "period": "2025-12",
+          "value": 1.9294761905
+        },
+        {
+          "period": "2026-02",
+          "value": 1.9312
+        },
+        {
+          "period": "2026-03",
+          "value": 1.9320909
+        },
+        {
+          "period": "2026-04",
+          "value": 1.9316
+        },
+        {
+          "period": "2026-05",
+          "value": 1.93065
+        },
+        {
+          "period": "2026-06",
+          "value": 2.0448636
+        },
+        {
+          "period": "2026-01",
+          "value": 1.931952381
+        }
+      ],
+      "last_value": 1.931952381,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.063081+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "RT",
+        "MM",
+        "EURIBOR1MD_",
+        "HSTA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "RT",
+        "INSTRUMENT_FM": "MM",
+        "PROVIDER_FM_ID": "EURIBOR1MD_",
+        "DATA_TYPE_FM": "HSTA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=Refinitiv",
+        "INSTRUMENT_FM=Money Market",
+        "PROVIDER_FM_ID=Euribor 1-month",
+        "DATA_TYPE_FM=Historical close, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=Refinitiv | INSTRUMENT_FM=Money Market | PROVIDER_FM_ID=Euribor 1-month | DATA_TYPE_FM=Historical close, average of observations through period",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 1.8922609
+        },
+        {
+          "period": "2025-08",
+          "value": 1.89
+        },
+        {
+          "period": "2025-09",
+          "value": 1.8972273
+        },
+        {
+          "period": "2025-10",
+          "value": 1.9062609
+        },
+        {
+          "period": "2025-11",
+          "value": 1.9056
+        },
+        {
+          "period": "2025-12",
+          "value": 1.9154762
+        },
+        {
+          "period": "2026-02",
+          "value": 1.95225
+        },
+        {
+          "period": "2026-03",
+          "value": 1.9327727
+        },
+        {
+          "period": "2026-04",
+          "value": 1.9712
+        },
+        {
+          "period": "2026-05",
+          "value": 1.95655
+        },
+        {
+          "period": "2026-06",
+          "value": 2.1463182
+        },
+        {
+          "period": "2026-01",
+          "value": 1.9607619
+        }
+      ],
+      "last_value": 1.9607619,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.063400+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "RT",
+        "MM",
+        "EURIBOR1YD_",
+        "HSTA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "RT",
+        "INSTRUMENT_FM": "MM",
+        "PROVIDER_FM_ID": "EURIBOR1YD_",
+        "DATA_TYPE_FM": "HSTA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=Refinitiv",
+        "INSTRUMENT_FM=Money Market",
+        "PROVIDER_FM_ID=Euribor 1-year",
+        "DATA_TYPE_FM=Historical close, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=Refinitiv | INSTRUMENT_FM=Money Market | PROVIDER_FM_ID=Euribor 1-year | DATA_TYPE_FM=Historical close, average of observations through period",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 2.079087
+        },
+        {
+          "period": "2025-08",
+          "value": 2.1139048
+        },
+        {
+          "period": "2025-09",
+          "value": 2.1715
+        },
+        {
+          "period": "2025-10",
+          "value": 2.1873043
+        },
+        {
+          "period": "2025-11",
+          "value": 2.2169
+        },
+        {
+          "period": "2025-12",
+          "value": 2.2671429
+        },
+        {
+          "period": "2026-02",
+          "value": 2.2207
+        },
+        {
+          "period": "2026-03",
+          "value": 2.5651364
+        },
+        {
+          "period": "2026-04",
+          "value": 2.7468
+        },
+        {
+          "period": "2026-05",
+          "value": 2.8042
+        },
+        {
+          "period": "2026-06",
+          "value": 2.7975909
+        },
+        {
+          "period": "2026-01",
+          "value": 2.2450952
+        }
+      ],
+      "last_value": 2.2450952,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.063425+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "RT",
+        "MM",
+        "EURIBOR3MD_",
+        "HSTA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "RT",
+        "INSTRUMENT_FM": "MM",
+        "PROVIDER_FM_ID": "EURIBOR3MD_",
+        "DATA_TYPE_FM": "HSTA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=Refinitiv",
+        "INSTRUMENT_FM=Money Market",
+        "PROVIDER_FM_ID=Euribor 3-month",
+        "DATA_TYPE_FM=Historical close, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=Refinitiv | INSTRUMENT_FM=Money Market | PROVIDER_FM_ID=Euribor 3-month | DATA_TYPE_FM=Historical close, average of observations through period",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 1.9863478
+        },
+        {
+          "period": "2025-08",
+          "value": 2.0210952
+        },
+        {
+          "period": "2025-09",
+          "value": 2.0272727
+        },
+        {
+          "period": "2025-10",
+          "value": 2.0344348
+        },
+        {
+          "period": "2025-11",
+          "value": 2.04165
+        },
+        {
+          "period": "2025-12",
+          "value": 2.0484286
+        },
+        {
+          "period": "2026-02",
+          "value": 2.0113
+        },
+        {
+          "period": "2026-03",
+          "value": 2.1094091
+        },
+        {
+          "period": "2026-04",
+          "value": 2.1753
+        },
+        {
+          "period": "2026-05",
+          "value": 2.2261
+        },
+        {
+          "period": "2026-06",
+          "value": 2.339
+        },
+        {
+          "period": "2026-01",
+          "value": 2.0277273
+        }
+      ],
+      "last_value": 2.0277273,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.063445+00:00"
+    },
+    {
+      "flow": "FM",
+      "dim_codes": [
+        "M",
+        "U2",
+        "EUR",
+        "RT",
+        "MM",
+        "EURIBOR6MD_",
+        "HSTA"
+      ],
+      "dimensions": {
+        "FREQ": "M",
+        "REF_AREA": "U2",
+        "CURRENCY": "EUR",
+        "PROVIDER_FM": "RT",
+        "INSTRUMENT_FM": "MM",
+        "PROVIDER_FM_ID": "EURIBOR6MD_",
+        "DATA_TYPE_FM": "HSTA"
+      },
+      "dimension_names": [
+        "FREQ=Monthly",
+        "REF_AREA=Euro area (changing composition)",
+        "CURRENCY=Euro",
+        "PROVIDER_FM=Refinitiv",
+        "INSTRUMENT_FM=Money Market",
+        "PROVIDER_FM_ID=Euribor 6-month",
+        "DATA_TYPE_FM=Historical close, average of observations through period"
+      ],
+      "name": "FREQ=Monthly | REF_AREA=Euro area (changing composition) | CURRENCY=Euro | PROVIDER_FM=Refinitiv | INSTRUMENT_FM=Money Market | PROVIDER_FM_ID=Euribor 6-month | DATA_TYPE_FM=Historical close, average of observations through period",
+      "observations": [
+        {
+          "period": "2025-07",
+          "value": 2.0553478
+        },
+        {
+          "period": "2025-08",
+          "value": 2.0844286
+        },
+        {
+          "period": "2025-09",
+          "value": 2.1023182
+        },
+        {
+          "period": "2025-10",
+          "value": 2.1068261
+        },
+        {
+          "period": "2025-11",
+          "value": 2.131
+        },
+        {
+          "period": "2025-12",
+          "value": 2.1394762
+        },
+        {
+          "period": "2026-02",
+          "value": 2.1435
+        },
+        {
+          "period": "2026-03",
+          "value": 2.3219545
+        },
+        {
+          "period": "2026-04",
+          "value": 2.45375
+        },
+        {
+          "period": "2026-05",
+          "value": 2.5364
+        },
+        {
+          "period": "2026-06",
+          "value": 2.5955
+        },
+        {
+          "period": "2026-01",
+          "value": 2.1371429
+        }
+      ],
+      "last_value": 2.1371429,
+      "count": 12,
+      "fetched_at": "2026-07-28T07:00:39.063471+00:00"
+    }
+  ]
+}

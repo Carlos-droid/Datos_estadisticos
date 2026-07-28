@@ -21,7 +21,7 @@ if str(_repo_root) not in sys.path:
     sys.path.insert(0, str(_repo_root))
 
 from src.python.config import (
-    BASE_DIR, FUNCAS_DIR, BBVA_DIR, INE_DIR, source_dirs,
+    BASE_DIR, FUNCAS_DIR, BBVA_DIR, INE_DIR, ECB_DIR, source_dirs,
 )
 from src.python.log_utils import ScrapeLogger
 
@@ -321,7 +321,108 @@ def _now_iso() -> str:
 
 
 # ---------------------------------------------------------------------------
-# 4. Catálogo unificado
+# 4. Normalizar ECB
+# ---------------------------------------------------------------------------
+def normalize_ecb() -> list[dict]:
+    """Lee raw/ecb/*.json y produce registros normalizados.
+
+    Cada archivo ecb/raw/{flow}.json contiene N series temporales
+    con metadatos de dimensiones y últimas observaciones.
+    """
+    items = []
+    ecb_raw = ECB_DIR / "raw"
+    if not ecb_raw.exists():
+        log.warning("ECB raw/ no existe")
+        return items
+
+    flow_files = sorted(ecb_raw.glob("*.json"))
+    if not flow_files:
+        log.warning("ECB raw/ está vacío")
+        return items
+
+    flow_labels = {
+        "ICP": "HICP (Inflación Armonizada)",
+        "MIR": "Tipos de interés bancarios",
+        "BSI": "Balances financieros",
+        "STS": "Estadísticas coyunturales",
+        "EXR": "Tipos de cambio",
+        "BOP": "Balanza de pagos",
+        "FM":  "Mercados financieros",
+    }
+
+    for fpath in flow_files:
+        flow = fpath.stem
+        try:
+            with open(fpath, encoding="utf-8") as f:
+                data = json.load(f)
+        except (json.JSONDecodeError, OSError) as e:
+            log.warning(f"Error leyendo {fpath.name}", error=str(e))
+            continue
+
+        label = flow_labels.get(flow, flow)
+        series_list = data.get("series", [])
+
+        for i, s in enumerate(series_list):
+            name = s.get("name", f"{flow} series {i}")
+            dims = s.get("dimensions", {})
+            obs = s.get("observations", [])
+            last_val = s.get("last_value")
+            count = s.get("count", 0)
+
+            # Último período con dato
+            date_iso = obs[-1]["period"][:10] if obs else ""
+
+            # Tags según dimensiones
+            tags = ["ECB", flow]
+            for dim_id in ("REF_AREA", "ADJUSTMENT", "ICP_SUFFIX"):
+                if dim_id in dims:
+                    val = dims[dim_id]
+                    if val and val not in ("ES", "U2"):
+                        tags.append(val.lower())
+
+            description = (
+                f"ECB {label} | {name} | "
+                f"Valor: {last_val} | "
+                f"Obs: {count} ({date_iso})"
+            )
+
+            # URL directa a la serie en la API ECB
+            dim_codes = s.get("dim_codes", [])
+            series_path = ".".join(dim_codes) if dim_codes else flow
+            api_url = (
+                f"https://data-api.ecb.europa.eu/service/data/{flow}/{series_path}"
+            )
+
+            # Información de la última observación como cadena
+            last_obs_str = ""
+            if obs:
+                last_obs_str = f"{obs[-1]['period']}: {obs[-1]['value']}"
+
+            items.append({
+                "id": f"ecb-{flow}-{i:04d}",
+                "source": "ECB",
+                "flow": flow,
+                "title": f"[ECB] {label}: {name}",
+                "date_iso": date_iso,
+                "description": description,
+                "tags": tags,
+                "url": api_url,
+                "type": "time_series",
+                "last_value": last_val,
+                "last_observation": last_obs_str,
+                "count": count,
+                "dimensions": dims,
+                "dimension_names": s.get("dimension_names", []),
+                "normalized_at": _now_iso(),
+            })
+
+        log.info(f"ECB {flow}: {len(series_list)} series normalizadas")
+
+    return items
+
+
+# ---------------------------------------------------------------------------
+# 5. Catálogo unificado
 # ---------------------------------------------------------------------------
 def build_catalog(all_items: list[dict]):
     """Escribe catalog.jsonl con todos los ítems normalizados."""
@@ -350,15 +451,17 @@ def main():
     funcas_items = normalize_funcas()
     bbva_items   = normalize_bbva()
     ine_items    = normalize_ine()
+    ecb_items    = normalize_ecb()
 
     # Guardar por fuente
     _save_jsonl(PROC_DIR / "funcas_clean.jsonl", funcas_items)
     _save_jsonl(PROC_DIR / "bbva_clean.jsonl",   bbva_items)
     _save_jsonl(PROC_DIR / "ine_clean.jsonl",    ine_items)
+    _save_jsonl(PROC_DIR / "ecb_clean.jsonl",    ecb_items)
 
     # Catálogo unificado
     all_items = sorted(
-        funcas_items + bbva_items + ine_items,
+        funcas_items + bbva_items + ine_items + ecb_items,
         key=lambda x: x.get("date_iso", ""),
         reverse=True,
     )
@@ -369,6 +472,7 @@ def main():
     log.info(f"   Funcas:  {len(funcas_items)} docs")
     log.info(f"   BBVA:    {len(bbva_items)} pubs")
     log.info(f"   INE:     {len(ine_items)} ops")
+    log.info(f"   ECB:     {len(ecb_items)} series")
     log.info(f"   Total:   {len(all_items)} registros en catalog.jsonl")
     log.info(f"   Destino: {PROC_DIR}")
 

@@ -104,10 +104,10 @@ class TestCatalog:
         assert len(lines) > 0, "catalog.jsonl está vacío"
 
     def test_catalog_has_expected_items(self):
-        """catalog.jsonl debe tener ~1052 ítems."""
+        """catalog.jsonl debe tener ~4295 ítems (con ECB)."""
         lines = [l for l in self.CATALOG.read_text(encoding="utf-8").splitlines() if l.strip()]
-        assert len(lines) >= 1000, f"catalog.jsonl tiene {len(lines)} líneas, esperaba >=1000"
-        assert len(lines) <= 1100, f"catalog.jsonl tiene {len(lines)} líneas, esperaba <=1100"
+        assert len(lines) >= 4000, f"catalog.jsonl tiene {len(lines)} líneas, esperaba >=4000"
+        assert len(lines) <= 4500, f"catalog.jsonl tiene {len(lines)} líneas, esperaba <=4500"
 
     def test_catalog_lines_are_valid_json(self):
         """Cada línea de catalog.jsonl debe ser JSON válido con campos mínimos."""
@@ -117,16 +117,17 @@ class TestCatalog:
             assert "id" in item, f"Línea {i+1}: falta 'id'"
             assert "title" in item, f"Línea {i+1}: falta 'title'"
             assert "source" in item, f"Línea {i+1}: falta 'source'"
-            assert item["source"] in ("Funcas", "BBVA Research", "INE", "funcas", "bbva", "ine"), \
+            assert item['source'] in ('Funcas', 'BBVA Research', 'INE', 'ECB', 'funcas', 'bbva', 'ine'), \
                 f"Línea {i+1}: source '{item['source']}' inválido"
 
-    def test_catalog_has_three_sources(self):
-        """El catálogo debe contener datos de las 3 fuentes."""
+    def test_catalog_has_four_sources(self):
+        """El catálogo debe contener datos de las 4 fuentes."""
         lines = [l for l in self.CATALOG.read_text(encoding="utf-8").splitlines() if l.strip()]
         sources = set()
         for line in lines:
             item = json.loads(line)
             sources.add(item.get("source", ""))
-        assert "Funcas" in sources, "Faltan datos de Funcas"
-        assert "BBVA Research" in sources or "bbva" in sources, "Faltan datos de BBVA"
-        assert "INE" in sources, "Faltan datos de INE"
+        assert 'Funcas' in sources, 'Faltan datos de Funcas'
+        assert 'BBVA Research' in sources or 'bbva' in sources, 'Faltan datos de BBVA'
+        assert 'INE' in sources, 'Faltan datos de INE'
+        assert 'ECB' in sources, 'Faltan datos de ECB (Banco Central Europeo)'
